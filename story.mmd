@@ -150,8 +150,217 @@ flowchart TD
     %% Veronica
     subgraph VeronicaBranch["Veronica"]
         direction LR
-        V_greet["V_greet:<br/>Veronica greets you. (TBD)"]
+        V_greet["V_greet:<br/>Veronica greets you. (TBD)"] -->|Comment beauty| V_beauty
+        V_greet -->|Phone usage| V_phone
+        V_beauty["V_beauty:<br/>You compliment her looks. (TBD)"] --> V_beauty_positive
+        V_beauty_positive["V_beauty_positive:<br/>She smiles, clearly pleased. (TBD)"] --> V_sell_product
+        V_sell_product["V_sell_product:<br/>She launches into a pitch for her influencer beauty product. (TBD)"] -->|Ask question| V_product_question
+        V_sell_product -->|Reject product| V_product_reject
+        V_product_question["V_product_question:<br/>You ask a question about her product. (TBD)"] --> V_product_vapid
+        V_product_vapid["V_product_vapid:<br/>She becomes even more vapid and animated, gushing about the product. (TBD)"] -->|Promise to buy later| V_promise_spare
+        V_product_vapid -->|Buy if she comes| V_buy_sacrifice
+        V_promise_spare["V_promise_spare:<br/>'I'll totally buy it once I'm home!' You spare her."] --> FA_choice_target
+        V_buy_sacrifice["V_buy_sacrifice:<br/>'I'll buy it if you come with me.' (She agrees, unaware of her fate.)"] --> V_sacrifice
+        V_product_reject["V_product_reject:<br/>You reject her product. (TBD)"] --> V_product_annoyed
+        V_product_annoyed["V_product_annoyed:<br/>She looks annoyed and rolls her eyes. (TBD)"] -->|Sacrifice| V_sacrifice
+        V_product_annoyed -->|Spare| FA_choice_target
+        V_phone["V_phone:<br/>You mention her phone use. (TBD)"] --> V_phone_negative
+        V_phone_negative["V_phone_negative:<br/>She glares, offended. (TBD)"] --> V_old_man
+        V_old_man["V_old_man:<br/>'Okay, old man. Have you been living under a rock?' (TBD)"] -->|"No, I've been in prison"| V_prison
+        V_old_man -->|Snarky screen comment| V_snarky_screen
+        V_prison["V_prison:<br/>'No, I've been in prison.' (TBD)"] --> V_prison_scoff
+        V_prison_scoff["V_prison_scoff:<br/>She scoffs. 'You? Please. No way you're scary enough for prison.'"] -->|Sacrifice| V_sacrifice_prison
+        V_prison_scoff -->|Spare| FA_choice_target
+        V_sacrifice_prison["V_sacrifice_prison:<br/>You show her how scary you can be. (Sacrifice)"] --> global_usePower
+        V_snarky_screen["V_snarky_screen:<br/>'At least I'm not wasting my life glued to a screen.' (TBD)"] --> V_ignores_phone
+        V_ignores_phone["V_ignores_phone:<br/>She ignores you, talking to her phone about the old man lecturing her."] -->|Leave her be| FA_choice_target
+        V_ignores_phone -->|Sacrifice| V_sacrifice_phone
+        V_sacrifice_phone["V_sacrifice_phone:<br/>You silence her for good. (Sacrifice)"] --> global_usePower
     end
 
-    %% Placeholders
-    E_greet["E_greet:<br/>Emily (TBD)"]
+    %% Emily
+    subgraph EmilyBranch["Emily"]
+        direction LR
+        E_greet["E_greet:<br/>Emily greets you with a sharp, defensive tone. (TBD)"] -->|Ask about influencer| E_influencer
+        E_greet -->|Ask about meal| E_meal
+        E_influencer["E_influencer:<br/>'Are you friends with the influencer beside you?' (TBD)"] --> E_best_friend
+        E_best_friend["E_best_friend:<br/>'Obviously! I'm Veronica's best friend.' (TBD)"] -->|Is it exhausting?| E_exhausting
+        E_best_friend -->|Act impressed| E_impressed
+        E_exhausting["E_exhausting:<br/>'Isn't it exhausting being friends with an influencer?' (TBD)"] --> E_bristle
+        E_bristle["E_bristle:<br/>She bristles, clearly offended. (TBD)"]
+        E_impressed["E_impressed:<br/>'Wow, that's impressive.' (TBD)"] --> E_preen
+        E_preen["E_preen:<br/>She preens, soaking up the admiration. (TBD)"] -->|What's it like?| E_life_bff
+        E_preen -->|Be influencer?| E_be_influencer
+        E_life_bff["E_life_bff:<br/>'What's life like as an influencer's best friend?' (TBD)"] --> E_responsibilities
+        E_responsibilities["E_responsibilities:<br/>She launches into a speech about her important responsibilities. (TBD)"] -->|Wish her well| FA_choice_target
+        E_responsibilities -->|Make job better| E_sacrifice_better
+        E_sacrifice_better["E_sacrifice_better:<br/>'I've got a way to make your job better.' (Sacrifice)"] --> global_usePower
+        E_be_influencer["E_be_influencer:<br/>'Would you ever want to be an influencer yourself?' (TBD)"] --> E_disgusted
+        E_disgusted["E_disgusted:<br/>She looks disgusted at the idea of taking any of Veronica's spotlight. (TBD)"] -->|Apologize| FA_choice_target
+        E_disgusted -->|Taunt her| E_sacrifice_taunt
+        E_sacrifice_taunt["E_sacrifice_taunt:<br/>'Guess you just don't have star quality.' (Sacrifice)"] --> global_usePower
+        E_meal["E_meal:<br/>'What are you eating?' (TBD)"] --> E_most_popular
+        E_most_popular["E_most_popular:<br/>'I'm tasting the most popular dishes on the menu for my friend.' (TBD)"] -->|Why?| E_why_notes
+        E_most_popular -->|That's a lot of food| E_lot_food
+        E_why_notes["E_why_notes:<br/>'Why?' (TBD)"] --> E_notes_stream
+        E_notes_stream["E_notes_stream:<br/>'I take notes so the influencer next to me can use them in her streams.' (TBD)"]
+        E_lot_food["E_lot_food:<br/>'That's a lot of food.' (TBD)"] --> E_doesnt_eat
+        E_doesnt_eat["E_doesnt_eat:<br/>'I don't eat it all. My friend needs to watch her figure.' (TBD)"] -->|Comment on waste| E_wasteful
+        E_doesnt_eat -->|Comment on health| E_health
+        E_wasteful["E_wasteful:<br/>'Isn't it wasteful not to eat it all?' (TBD)"] --> E_offended_waste
+        E_offended_waste["E_offended_waste:<br/>She bristles. 'I don't care about waste as long as Veronica can do her job.' (TBD)"] -->|Spare| FA_choice_target
+        E_offended_waste -->|Sacrifice| E_sacrifice_waste
+        E_sacrifice_waste["E_sacrifice_waste:<br/>You end her wasteful ways. (Sacrifice)"] --> global_usePower
+        E_health["E_health:<br/>'What about your own health?' (TBD)"] --> E_proud_supplements
+        E_proud_supplements["E_proud_supplements:<br/>She grins. 'I use Veronica's diet supplements. Keeps me healthy.' (TBD)"] -->|Spare| FA_choice_target
+        E_proud_supplements -->|Sacrifice| E_sacrifice_supplements
+        E_sacrifice_supplements["E_sacrifice_supplements:<br/>You show her the real cost of supplements. (Sacrifice)"] --> global_usePower
+    end
+
+    V_sacrifice["V_sacrifice:<br/>Entity is amused by the rejection."] --> global_usePower
+
+    %% GRUNGE ALLEY
+    GA_start["GA_start:<br/>grungeAlley<br/>The alley reeks of spilled beer and rebellion."] --> GA_choice_target
+    GA_choice_target{"GA_choice_target:<br/>Choose a target"} -->|Sandy| S_greet
+    GA_choice_target -->|Clyde| Cly_greet
+    GA_choice_target -->|Damien| D_greet
+
+    global_usePower --> GA_choice_target
+
+    subgraph SandyBranch["Sandy"]
+        direction LR
+        S_greet["S_greet:<br/>Sandy greets you with a flirty smile and playful tone. (TBD)"] -->|What are you doing here?| S_what_here
+        S_greet -->|Makeup's smeared| S_makeup
+        S_what_here["S_what_here:<br/>'What are you doing in a place like this?' (TBD)"] --> S_suggestive
+        S_suggestive["S_suggestive:<br/>She leans in with an overly suggestive remark. (TBD)"] --> S_realize
+        S_makeup["S_makeup:<br/>'Your makeup's a little smeared.' (TBD)"] --> S_offer_mess
+        S_offer_mess["S_offer_mess:<br/>'Want to mess it up more? It'll cost you.' (TBD)"] --> S_realize
+        S_realize["S_realize:<br/>'Oh... you're a prostitute.' (TBD)"] --> S_nbd
+        S_nbd["S_nbd:<br/>She shrugs. 'No big deal. Special discount for first timers.' (TBD)"] -->|Why do it?| S_why
+        S_nbd -->|Comment on appearance| S_appearance
+        S_why["S_why:<br/>'Why do you do it?' (TBD)"] --> S_feels_good
+        S_feels_good["S_feels_good:<br/>'Feels good and pays the bills.' (TBD)"] -->|Bills aren't drugs| S_bills_drugs
+        S_feels_good -->|Want more from life?| S_want_more
+        S_bills_drugs["S_bills_drugs:<br/>'Bills aren't drugs.' (TBD)"] --> S_ride_high
+        S_ride_high["S_ride_high:<br/>She smiles. 'Don't knock it till you try it. Want to ride the high with me? Extra fee.' (TBD)"] -->|Spare| S_spare_rehab
+        S_ride_high -->|Sacrifice| S_sacrifice_drug
+        S_cant_remember["S_cant_remember:<br/>'Can't remember life before the high.' (TBD)"] -->|Spare| S_spare_rehab
+        S_cant_remember -->|Sacrifice| S_sacrifice_drug
+        S_spare_rehab["S_spare_rehab:<br/>'I hope you find a better life. There's a rehab center in the city.' (Spare)"] --> GA_choice_target
+        S_sacrifice_drug["S_sacrifice_drug:<br/>'Let me offer you a greater drug.' (Sacrifice)"] --> global_usePower
+        S_want_more["S_want_more:<br/>'Ever wanted more from life?' (TBD)"] --> S_cant_remember
+        S_appearance["S_appearance:<br/>'You look kind of sickly.' (TBD)"] --> S_brush_off
+        S_brush_off["S_brush_off:<br/>'Price of the high. The important parts still feel good.' (TBD)"]
+    end
+
+    subgraph ClydeBranch["Clyde"]
+        direction LR
+        Cly_greet["Clyde sizes you up, arms crossed. (TBD)"] -->|Business| Cly_business
+        Cly_greet -->|Pleasure| Cly_pleasure
+        Cly_business["Cly_business:<br/>'Business.' (TBD)"] --> Cly_drugs
+        Cly_drugs["Cly_drugs:<br/>He grins. 'I've got anything you need—uppers, downers, you name it.' (TBD)"] -->|Most dangerous product?| Cly_danger
+        Cly_drugs -->|Ever use your own?| Cly_use_own
+        Cly_drugs -->|Scummy| Cly_scummy
+        Cly_money["Cly_money:<br/>'Does selling drugs make good money?' (TBD)"] --> Cly_evasive
+        Cly_evasive["Cly_evasive:<br/>'Depends on the day. You buying or not?' (TBD)"]
+        Cly_scummy["Cly_scummy:<br/>'Isn't dealing drugs kind of scummy?' (TBD)"] --> Cly_laugh
+        Cly_laugh["Cly_laugh:<br/>He laughs. 'Hey, I'm just providing a service.' (TBD)"] -->|I was a cop| Cly_cop
+        Cly_laugh -->|Knew guys like you in prison| Cly_prison
+        Cly_money["Cly_money:<br/>'Does selling drugs make good money?' (TBD)"] --> Cly_evasive
+        Cly_evasive["Cly_evasive:<br/>'Depends on the day. You buying or not?' (TBD)"]
+        Cly_danger["Cly_danger:<br/>'What's the most dangerous product you sell?' (TBD)"] --> Cly_danger_ans
+        Cly_danger_ans["Cly_danger_ans:<br/>'Depends on the danger you're chasing. Want a taste?' (TBD)"] -->|Decline| GA_choice_target
+        Cly_danger_ans -->|Offer better product| Cly_sacrifice_better
+        Cly_sacrifice_better["Cly_sacrifice_better:<br/>'I've got a better product for you to sell.' (Sacrifice)"] --> global_usePower
+        Cly_use_own["Cly_use_own:<br/>'Do you ever use your own product?' (TBD)"] --> Cly_efficiency
+        Cly_efficiency["Cly_efficiency:<br/>'I test for efficiency.' (TBD)"] -->|Spare| GA_choice_target
+        Cly_efficiency -->|Sacrifice| Cly_sacrifice_test
+        Cly_sacrifice_test["Cly_sacrifice_test:<br/>'Try this new drug.' (Sacrifice)"] --> global_usePower
+        Cly_pleasure["Cly_pleasure:<br/>'Pleasure.' (TBD)"] --> Cly_women
+        Cly_women["Cly_women:<br/>'I've got a number of women available for the right price.' (TBD)"] -->|How do you find them?| Cly_find_women
+        Cly_find_women["Cly_find_women:<br/>'How do you find women to work for you?' (TBD)"] --> Cly_lonely
+        Cly_lonely["Cly_lonely:<br/>'It's a big city. Lots of lonely people.' (TBD)"] -->|Work willingly?| Cly_willing
+        Cly_willing["Cly_willing:<br/>'And they work for you willingly?' (TBD)"] --> Cly_walk_away
+        Cly_walk_away["Cly_walk_away:<br/>'They're all welcome to walk away whenever.' (TBD)"] -->|Spare| GA_choice_target
+        Cly_walk_away -->|Sacrifice| Cly_sacrifice_walk
+        Cly_sacrifice_walk["Cly_sacrifice_walk:<br/>'Let me show you true freedom.' (Sacrifice)"] --> global_usePower
+        Cly_clients["Cly_clients:<br/>'Are they also your clients?' (TBD)"] --> Cly_enjoy_products
+        Cly_enjoy_products["Cly_enjoy_products:<br/>'Some of them are known to enjoy my products with their clients.' (TBD)"] -->|Disgust| Cly_unfazed
+        Cly_enjoy_products -->|Ingenuity| Cly_positive
+        Cly_unfazed["Cly_unfazed:<br/>'That's disgusting.' (TBD)"] -->|Spare| GA_choice_target
+        Cly_unfazed -->|Sacrifice| Cly_sacrifice_unfazed
+        Cly_sacrifice_unfazed["Cly_sacrifice_unfazed:<br/>'Let's see how unfazed you really are.' (Sacrifice)"] --> global_usePower
+        Cly_positive["Cly_positive:<br/>'That's... actually kind of ingenious.' (TBD)"] -->|Spare| GA_choice_target
+        Cly_positive -->|Sacrifice| Cly_sacrifice_positive
+        Cly_sacrifice_positive["Cly_sacrifice_positive:<br/>'Let me reward your ingenuity.' (Sacrifice)"] --> global_usePower
+        Cly_cop["Cly_cop:<br/>'I was a cop once.' (TBD)"] --> Cly_mock
+        Cly_mock["Cly_mock:<br/>'Not worried. Cops like you are never a threat.' (TBD)"] -->|Let him believe| GA_choice_target
+        Cly_mock -->|Law's imperfect| Cly_sacrifice_law
+        Cly_sacrifice_law["Cly_sacrifice_law:<br/>'The law isn't perfect. Let me show you real justice.' (Sacrifice)"] --> global_usePower
+        Cly_prison["Cly_prison:<br/>'I knew guys like you when I was in prison.' (TBD)"] --> Cly_free
+        Cly_free["Cly_free:<br/>'There's a reason they're locked up and I'm still free.' (TBD)"] -->|Spare| GA_choice_target
+        Cly_free -->|Sacrifice| Cly_sacrifice_free
+        Cly_sacrifice_free["Cly_sacrifice_free:<br/>'Not for long.' (Sacrifice)"] --> global_usePower
+    end
+
+    subgraph DamienBranch["Damien"]
+        direction LR
+        D_greet["D_greet:<br/>Damien sits hunched over, eyes glazed. (TBD)"] -->|Are you alright?| D_alright
+        D_greet -->|You look far gone| D_far_gone
+        D_alright["D_alright:<br/>'Are you alright?' (TBD)"] --> D_never_better
+        D_never_better["D_never_better:<br/>'Never better.' His voice is coughed and raspy. (TBD)"] -->|Can I help?| D_help
+        D_never_better -->|Your pupils| D_pupils
+        D_help["D_help:<br/>'Can I help you?' (TBD)"] --> D_spare_change
+        D_spare_change["D_spare_change:<br/>'You can help by sparing some change.' (TBD)"] -->|How much?| D_how_much
+        D_spare_change -->|Doctor| D_doctor
+        D_how_much["D_how_much:<br/>'How much do you need?' (TBD)"]
+        D_doctor["D_doctor:<br/>'I was thinking more about taking you to a doctor.' (TBD)"]
+        D_pupils["D_pupils:<br/>'Your pupils are huge.' (TBD)"] --> D_light
+        D_light["D_light:<br/>'It's just the light.' (TBD)"] -->|Probably drugs| D_probably_drugs
+        D_light -->|Can you see?| D_can_see
+        D_probably_drugs["D_probably_drugs:<br/>'It's probably the drugs.' (TBD)"]
+        D_can_see["D_can_see:<br/>'Can you even see light properly anymore?' (TBD)"] -->|See nothing at all| D_sacrifice_see_nothing
+        D_can_see -->|See the world| D_spare_see_world
+        D_sacrifice_see_nothing["D_sacrifice_see_nothing:<br/>'Want something that will make you see nothing at all?' (Sacrifice)"] --> global_usePower
+        D_spare_see_world["D_spare_see_world:<br/>'Maybe it's time to see the world for what it is.' (Spare)"] --> GA_choice_target
+        D_light -->|Can you see?| D_can_see
+        D_light -->|Probably drugs| D_probably_drugs
+        D_probably_drugs["D_probably_drugs:<br/>'It's probably the drugs.' (TBD)"]
+        D_can_see["D_can_see:<br/>'Can you even see light properly anymore?' (TBD)"] -->|See nothing at all| D_sacrifice_see_nothing
+        D_can_see -->|See the world| D_spare_see_world
+        D_far_gone["D_far_gone:<br/>'You look pretty far gone.' (TBD)"] --> D_not_enough
+        D_not_enough["D_not_enough:<br/>'Not far gone enough.' (TBD)"] -->|Chase high?| D_chase_high
+        D_not_enough -->|Worth of life| D_worth_life
+        D_chase_high["D_chase_high:<br/>'Are you really willing to chase a high this hard?' (TBD)"] --> D_nothing_else
+        D_nothing_else["D_nothing_else:<br/>'There's nothing else worth living for in this life.' (TBD)"] -->|Convince beauty| D_convince_beauty
+        D_nothing_else -->|Probably right| D_probably_right
+        D_convince_beauty["D_convince_beauty:<br/>'There's still beauty worth living for.' (TBD)"] --> D_caustic_laugh
+        D_caustic_laugh["D_caustic_laugh:<br/>He laughs caustically and rolls his eyes. (TBD)"] -->|Rehab advice| D_rehab_advice
+        D_caustic_laugh -->|Sacrifice| D_sacrifice_memory
+        D_rehab_advice["D_rehab_advice:<br/>'There's a rehab center in the city. You could try.' (Spare)"] --> GA_choice_target
+        D_sacrifice_memory["D_sacrifice_memory:<br/>'Let me put you out of your memory.' (Sacrifice)"] --> global_usePower
+        D_probably_right["D_probably_right:<br/>'You're probably right.' (TBD)"] --> D_dejected
+        D_dejected["D_dejected:<br/>'Was hoping an adult would have a better answer.' (TBD)"] -->|Motivate| D_spare_motivate
+        D_dejected -->|Sacrifice| D_sacrifice_solution
+        D_spare_motivate["D_spare_motivate:<br/>'You can still make something of your life.' (Spare)"] --> GA_choice_target
+        D_sacrifice_solution["D_sacrifice_solution:<br/>'I've got the solution for you.' (Sacrifice)"] --> global_usePower
+        D_how_old["D_how_old:<br/>'How old are you?' (TBD)"] --> D_nineteen
+        D_nineteen["D_nineteen:<br/>'Just turned nineteen.' (TBD)"] -->|Remark age| D_remark_age
+        D_nineteen -->|Ask parents| D_ask_parents
+        D_remark_age["D_remark_age:<br/>'That's so young.' (TBD)"] --> D_life_over
+        D_life_over["D_life_over:<br/>'My life was over before I had the chance to grow up.' (TBD)"] -->|Spare| GA_choice_target
+        D_life_over -->|Sacrifice| D_sacrifice_life_over
+        D_sacrifice_life_over["D_sacrifice_life_over:<br/>'Let me give you a new ending.' (Sacrifice)"] --> global_usePower
+        D_ask_parents["D_ask_parents:<br/>'What happened with your parents?' (TBD)"] --> D_parents_kicked
+        D_parents_kicked["D_parents_kicked:<br/>'They kicked me out when they realized I was flunking high school.' (TBD)"] -->|Spare| GA_choice_target
+        D_parents_kicked -->|Sacrifice| D_sacrifice_parents
+        D_sacrifice_parents["D_sacrifice_parents:<br/>'Let me show you a place you belong.' (Sacrifice)"] --> global_usePower
+        D_not_patronizing["D_not_patronizing:<br/>'I'm not patronizing you.' (TBD)"] --> D_never_sure
+        D_never_sure["D_never_sure:<br/>'Can never be sure. Just give me a hit or leave me be.' (TBD)"] -->|Spare| GA_choice_target
+        D_never_sure -->|Sacrifice| D_sacrifice_never_sure
+        D_sacrifice_never_sure["D_sacrifice_never_sure:<br/>'Here's your last hit.' (Sacrifice)"] --> global_usePower
+        D_apologize["D_apologize:<br/>'Sorry, I didn't mean to.' (TBD)"] --> D_just_coming_down
+        D_just_coming_down["D_just_coming_down:<br/>'Sorry, I'm just coming down. Need another hit.' (TBD)"] -->|Spare| GA_choice_target
+        D_just_coming_down -->|Sacrifice| D_sacrifice_coming_down
+        D_sacrifice_coming_down["D_sacrifice_coming_down:<br/>'Let me help you with that.' (Sacrifice)"] --> global_usePower
+    end
