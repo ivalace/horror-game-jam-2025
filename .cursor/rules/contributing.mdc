@@ -3,6 +3,9 @@ description:
 globs: 
 alwaysApply: true
 ---
+Story file is here: [story.mmd](mdc:story.mmd)
+There are no other files in this project.
+
 IMPORTANT RULES:
 - ALL nodes must ALWAYS have human-legible-but-not-verbose IDs, visible within the graph nodes, on their own dedicated line of text within the node.
 - DO NOT EVER change node IDs without explicit permission. Node IDs are responsible for syncing with external systems, so if they change unexpectedly that will cause breakage.
