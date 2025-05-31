@@ -1,0 +1,144 @@
+flowchart TD
+    %% GLOBAL NODES
+    usePower["usePower<br/>(Entity grants power)"]
+
+    %% TOURIST CENTER
+    tcStart["touristCenter<br/>Ah, fresh souls ripe for the taking."] --> tcSelect
+    tcSelect{"Choose a target"} -->|Lisa| L0
+    tcSelect -->|Zachary| Z0
+    tcSelect -->|Andrew| A0
+    usePower --> tcSelect
+
+    %% Lisa
+    subgraph LisaBranch["Lisa"]
+        direction LR
+        L0["Lisa: &quot;Oh, hello! Could you take our picture?&quot;"] -->|Yes| L1
+        L0 -->|No| L2
+
+        L1["*snap* &quot;Thanks! What's your name?&quot;"] -->|Truth| L1a
+        L1 -->|Evade| L1b
+
+        L1a["&quot;Nathan? Nice! Are you from here?&quot;"] -->|Specific| L1a1
+        L1a -->|Hedge| L1a2
+        L1a1["You name a neighborhood."] --> L3
+        L1a2["&quot;Spoken like a true local!&quot;"] --> L3
+
+        L1b["Lisa introduces herself."] --> L3
+
+        L2["&quot;Sorry to bother you.&quot;"] -->|"Chat anyway"| L1b
+        L2 -->|Sacrifice| L_sac
+
+        L3["Zach: &quot;Enough chatting with our food.&quot;"] -->|Sacrifice| L_sac
+        L3 -->|Spare| tcSelect
+
+        L_sac["Entity is pleased"] --> usePower
+    end
+
+    %% Zachary
+    subgraph ZacharyBranch["Zachary"]
+        direction LR
+        Z0["Zachary: &quot;Yeah? Need something?&quot;"] -->|Cool shirt| Z1
+        Z0 -->|You local| ZQ0
+
+        Z1["&quot;Uh, thanks. Know the band?&quot;"] -->|Yeah| Z2
+        Z1 -->|No| Z3
+
+        Z2["&quot;Right? Love them. Your name?&quot;"] -->|Truth| Z2a
+        Z2 -->|Hedge| Z2b
+        Z2a["&quot;Cool. I'm Zachary.&quot;"] --> Z4
+        Z2b["He frowns at the secrecy."] --> Z4
+
+        Z3["&quot;Yeah, it's cool I guess.&quot;"] -->|Genre| Z3a
+        Z3 -->|Colors| Z3b
+        Z3a["&quot;Mostly thrash metal.&quot;"] -->|Cool| Z2
+        Z3a -->|Lame| Z3aL
+        Z3aL["&quot;Whatever, old man.&quot;"] --> Z4
+        Z3b["&quot;Green's a sick color.&quot;"] --> Z4
+
+        Z4{"End of chat"} -->|Sacrifice| Z_sac
+        Z4 -->|Spare| tcSelect
+
+        ZQ0["&quot;Traveling with my girlfriend. Date spots?&quot;"] -->|River bridge| ZQ1
+        ZQ0 -->|Movies| ZQ2
+        ZQ1["&quot;That sounds cool.&quot;"] --> Z4
+        ZQ2["&quot;Movies? Lame, but thanks.&quot;"] --> Z4
+
+        Z_sac["Entity is neutral"] --> usePower
+    end
+
+    %% Andrew
+    subgraph AndrewBranch["Andrew"]
+        direction LR
+        A0["Andrew greets you with con-man charm."] -->|Comment looks| A1
+        A0 -->|Ask tourist| AQ0
+
+        A1["Brags about appearance."] -->|Rich| A1a
+        A1 -->|Suspicious| A1b
+        A1a["Faux humility, spins con."] -->|Interest| A2
+        A1a -->|Distrust| A3
+
+        A2["You look like an easy mark."] -->|Sacrifice| A_sac
+        A2 -->|Spare| tcSelect
+
+        A3["He doubles down."] -->|Sold| A4
+        A3 -->|Refuse| A5
+        A4["Self-satisfied."] -->|Sacrifice| A_sac
+        A4 -->|Spare| tcSelect
+        A5["Sours after losing mark."] -->|Sacrifice| A_sac
+        A5 -->|Spare| tcSelect
+
+        A1b["Smoothly counters suspicion."] -->|Sold| A4
+        A1b -->|Refuse| A5
+
+        AQ0["Lies about globe-trotting."] -->|Curious| AQ1
+        AQ0 -->|Disbelieving| AQ2
+        AQ1["Starts his spiel."] -->|Interest| A2
+        AQ1 -->|Distrust| A3
+        AQ2["Overloads with fake detail."] -->|Believe| A2
+        AQ2 -->|Distrust| A3
+
+        A_sac["Entity is displeased"] --> usePower
+    end
+
+    %% FOOD ALLEY
+    faStart["foodAlley<br/>Entity: &quot;Mmm, souls spiced by their own food.&quot;"] --> faSelect
+    usePower --> faSelect
+    faSelect{"Choose a target"} -->|Caleb| C0
+    faSelect -->|Veronica| V_placeholder
+    faSelect -->|Emily| E_placeholder
+
+    %% Caleb
+    subgraph CalebBranch["Caleb"]
+        direction LR
+        C0["Caleb greets you, clearly anxious."] -->|Comment distress| C_comment
+
+        C_comment["Surprised you noticed."] -->|Trouble often| C_trouble
+        C_comment -->|Why ignored| C_attention
+
+        C_trouble["Always messing up, boss mad."] -->|Offer escape| C_offer
+        C_trouble -->|Give advice| C_advice
+        C_offer["Hopeful and desperate."] -->|Sacrifice| C_sac
+        C_offer -->|Spare college| faSelect
+        C_advice["You give workload tips."] --> faSelect
+
+        C_attention["&quot;Just a dishwasher... not meant to be seen.&quot;"] -->|Build confidence| C_conf
+        C_attention -->|Ego hit| C_ego
+
+        C_conf["Feels happier and grateful."] -->|Cost favor| C_cost
+        C_conf -->|Kindness free| C_free
+
+        C_cost["Nervous about favor."] -->|Lure follow| C_sac
+        C_cost -->|Advice only| faSelect
+
+        C_free["Wants to repay you."] -->|Sacrifice help| C_sac
+        C_free -->|Spare better job| faSelect
+
+        C_ego["Defeated: &quot;That's what my boss says.&quot;"] -->|Offer easy money| C_sac
+        C_ego -->|Toughen up| faSelect
+
+        C_sac["Sacrifice — Entity feeds."] --> usePower
+    end
+
+    %% Placeholders
+    V_placeholder["Veronica (TBD)"]
+    E_placeholder["Emily (TBD)"]
