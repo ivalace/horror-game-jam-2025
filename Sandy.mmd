@@ -21,7 +21,7 @@ S_spare_rehab["S_spare_rehab:<br/>'I hope you find a better life. There's a reha
 S_sacrifice_drug["S_sacrifice_drug:<br/>'Let me offer you a greater drug.' (Sacrifice)"] --> S_end_chat
 S_want_more["S_want_more:<br/>'Ever wanted more from life?' (TBD)"] --> S_cant_remember
 S_appearance["S_appearance:<br/>'You look kind of sickly.' (TBD)"] --> S_brush_off
-S_brush_off["S_brush_off:<br/>'Price of the high. The important parts still feel good.' (TBD)"]
+S_brush_off["S_brush_off:<br/>'Price of the high. The important parts still feel good.' (TBD)"] --> S_want_more
 
 S_end_chat{"S_end_chat:<br/>End of chat"} -->|Sacrifice| S_sacrifice
 S_end_chat -->|Spare| GA_choice_target

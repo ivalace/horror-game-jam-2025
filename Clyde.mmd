@@ -3,46 +3,33 @@ direction LR
 Cly_greet["Clyde sizes you up, arms crossed. (TBD)"] -->|Business| Cly_business
 Cly_greet -->|Pleasure| Cly_pleasure
 Cly_business["Cly_business:<br/>'Business.' (TBD)"] --> Cly_drugs
-Cly_drugs["Cly_drugs:<br/>He grins. 'I've got anything you need—uppers, downers, you name it.' (TBD)"] -->|Most dangerous product?| Cly_danger
-Cly_drugs -->|Ever use your own?| Cly_use_own
-Cly_drugs -->|Scummy| Cly_scummy
+Cly_drugs["Cly_drugs:<br/>He grins. 'I've got anything you need—uppers, downers, you name it.' (TBD)"] --> Cly_scummy
+Cly_drugs --> Cly_money
 Cly_money["Cly_money:<br/>'Does selling drugs make good money?' (TBD)"] --> Cly_evasive
-Cly_evasive["Cly_evasive:<br/>'Depends on the day. You buying or not?' (TBD)"]
+Cly_evasive["Cly_evasive:<br/>'Depends on the day. You buying or not?' (TBD)"] --> Cly_danger
+Cly_evasive --> Cly_use_own
 Cly_scummy["Cly_scummy:<br/>'Isn't dealing drugs kind of scummy?' (TBD)"] --> Cly_laugh
 Cly_laugh["Cly_laugh:<br/>He laughs. 'Hey, I'm just providing a service.' (TBD)"] -->|I was a cop| Cly_cop
 Cly_laugh -->|Knew guys like you in prison| Cly_prison
-Cly_money["Cly_money:<br/>'Does selling drugs make good money?' (TBD)"] --> Cly_evasive
-Cly_evasive["Cly_evasive:<br/>'Depends on the day. You buying or not?' (TBD)"]
 Cly_danger["Cly_danger:<br/>'What's the most dangerous product you sell?' (TBD)"] --> Cly_danger_ans
-Cly_danger_ans["Cly_danger_ans:<br/>'Depends on the danger you're chasing. Want a taste?' (TBD)"] -->|Decline| GA_choice_target
-Cly_danger_ans -->|Offer better product| Cly_sacrifice_better
-Cly_sacrifice_better["Cly_sacrifice_better:<br/>'I've got a better product for you to sell.' (Sacrifice)"] --> global_usePower
+Cly_danger_ans["Cly_danger_ans:<br/>'Depends on the danger you're chasing. Want a taste?' (TBD)"] --> Cly_exit_chat
 Cly_use_own["Cly_use_own:<br/>'Do you ever use your own product?' (TBD)"] --> Cly_efficiency
-Cly_efficiency["Cly_efficiency:<br/>'I test for efficiency.' (TBD)"] -->|Spare| GA_choice_target
-Cly_efficiency -->|Sacrifice| Cly_sacrifice_test
-Cly_sacrifice_test["Cly_sacrifice_test:<br/>'Try this new drug.' (Sacrifice)"] --> global_usePower
+Cly_efficiency["Cly_efficiency:<br/>'I test for efficiency.' (TBD)"] --> Cly_exit_chat
 Cly_pleasure["Cly_pleasure:<br/>'Pleasure.' (TBD)"] --> Cly_women
-Cly_women["Cly_women:<br/>'I've got a number of women available for the right price.' (TBD)"] -->|How do you find them?| Cly_find_women
+Cly_women["Cly_women:<br/>'I've got a number of women available for the right price.' (TBD)"] --> Cly_price
+Cly_women -->|How do you find them?| Cly_find_women
 Cly_find_women["Cly_find_women:<br/>'How do you find women to work for you?' (TBD)"] --> Cly_lonely
-Cly_lonely["Cly_lonely:<br/>'It's a big city. Lots of lonely people.' (TBD)"] -->|Work willingly?| Cly_willing
+Cly_lonely["Cly_lonely:<br/>'It's a big city. Lots of lonely people.' (TBD)"] --> Cly_clients
+Cly_lonely -->|Work willingly?| Cly_willing
 Cly_willing["Cly_willing:<br/>'And they work for you willingly?' (TBD)"] --> Cly_walk_away
-Cly_walk_away["Cly_walk_away:<br/>'They're all welcome to walk away whenever.' (TBD)"] -->|Spare| GA_choice_target
-Cly_walk_away -->|Sacrifice| Cly_sacrifice_walk
-Cly_sacrifice_walk["Cly_sacrifice_walk:<br/>'Let me show you true freedom.' (Sacrifice)"] --> global_usePower
+Cly_walk_away["Cly_walk_away:<br/>'They're all welcome to walk away whenever.' (TBD)"] --> Cly_exit_chat
 Cly_clients["Cly_clients:<br/>'Are they also your clients?' (TBD)"] --> Cly_enjoy_products
-Cly_enjoy_products["Cly_enjoy_products:<br/>'Some of them are known to enjoy my products with their clients.' (TBD)"] -->|Disgust| Cly_unfazed
-Cly_enjoy_products -->|Ingenuity| Cly_positive
-Cly_unfazed["Cly_unfazed:<br/>'That's disgusting.' (TBD)"] -->|Spare| GA_choice_target
-Cly_unfazed -->|Sacrifice| Cly_sacrifice_unfazed
-Cly_sacrifice_unfazed["Cly_sacrifice_unfazed:<br/>'Let's see how unfazed you really are.' (Sacrifice)"] --> global_usePower
-Cly_positive["Cly_positive:<br/>'That's... actually kind of ingenious.' (TBD)"] -->|Spare| GA_choice_target
-Cly_positive -->|Sacrifice| Cly_sacrifice_positive
-Cly_sacrifice_positive["Cly_sacrifice_positive:<br/>'Let me reward your ingenuity.' (Sacrifice)"] --> global_usePower
+Cly_enjoy_products["Cly_enjoy_products:<br/>'Some of them are known to enjoy my products with their clients.' (TBD)"] --> Cly_exit_chat
+Cly_price["Cly_price:<br/>'What's the price?' (TBD)"] --> Cly_exit_chat
+Cly_exit_chat{"Cly_exit_chat:<br/>End of chat"} -->|Sacrifice| Cly_sacrifice
+Cly_exit_chat -->|Spare| GA_choice_target
 Cly_cop["Cly_cop:<br/>'I was a cop once.' (TBD)"] --> Cly_mock
-Cly_mock["Cly_mock:<br/>'Not worried. Cops like you are never a threat.' (TBD)"] -->|Let him believe| GA_choice_target
-Cly_mock -->|Law's imperfect| Cly_sacrifice_law
-Cly_sacrifice_law["Cly_sacrifice_law:<br/>'The law isn't perfect. Let me show you real justice.' (Sacrifice)"] --> global_usePower
+Cly_mock["Cly_mock:<br/>'Not worried. Cops like you are never a threat.' (TBD)"] --> Cly_exit_chat
 Cly_prison["Cly_prison:<br/>'I knew guys like you when I was in prison.' (TBD)"] --> Cly_free
-Cly_free["Cly_free:<br/>'There's a reason they're locked up and I'm still free.' (TBD)"] -->|Spare| GA_choice_target
-Cly_free -->|Sacrifice| Cly_sacrifice_free
-Cly_sacrifice_free["Cly_sacrifice_free:<br/>'Not for long.' (Sacrifice)"] --> global_usePower
+Cly_free["Cly_free:<br/>'There's a reason they're locked up and I'm still free.' (TBD)"] --> Cly_exit_chat
+Cly_sacrifice --> global_usePower
