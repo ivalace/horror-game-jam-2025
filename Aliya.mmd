@@ -22,11 +22,9 @@ MT_A_not_seen["MT_A_not_seen:<br/>'I haven't seen it yet.' (TBD)"] --> MT_A_why
 MT_A_why["MT_A_why:<br/>'Oh, why not?' (TBD)"] -->|Tied up| MT_A_tied_up
 MT_A_why -->|Not interested| MT_A_not_interested
 MT_A_tied_up["MT_A_tied_up:<br/>'I've just been a little tied up.' (TBD)"] --> MT_A_urge_see
-MT_A_urge_see["MT_A_urge_see:<br/>'That's a shame! You should really see it if you get the chance.' (TBD)"] -->|Why so invested?| MT_A_invested
-MT_A_urge_see -->|Favorite movies?| MT_A_favorite
+MT_A_urge_see["MT_A_urge_see:<br/>'That's a shame! You should really see it if you get the chance.' (TBD)"] --> MT_A_invested
 MT_A_not_interested["MT_A_not_interested:<br/>'I'm just not interested in the movie.' (TBD)"] --> MT_A_suggest_anyway
-MT_A_suggest_anyway["MT_A_suggest_anyway:<br/>'Oh, really? Well, you should still give it a try!' (TBD)"] -->|Why so invested?| MT_A_invested
-MT_A_suggest_anyway -->|Favorite movies?| MT_A_favorite
+MT_A_suggest_anyway["MT_A_suggest_anyway:<br/>'Oh, really? Well, you should still give it a try!' (TBD)"] --> MT_A_invested
 MT_A_invested["MT_A_invested:<br/>'I'm a film student. Studying to be a director.' (TBD)"] -->|Why not actress?| MT_A_not_actress
 MT_A_not_actress["MT_A_not_actress:<br/>'Why not be an actress?' (TBD)"] --> MT_A_tell_stories
 MT_A_tell_stories["MT_A_tell_stories:<br/>'I want to tell stories everyone else is too afraid to tell, not act in someone else's work.' (TBD)"] -->|Offer story| MT_A_sacrifice_story
