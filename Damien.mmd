@@ -12,13 +12,13 @@ D_never_better -->|Your pupils| D_pupils
 D_help["D_help:<br/>'Can I help you?' (TBD)"] --> D_spare_change
 D_spare_change["D_spare_change:<br/>'You can help by sparing some change.' (TBD)"] -->|How much?| D_how_much
 D_spare_change -->|Doctor| D_doctor
-D_how_much["D_how_much:<br/>'How much do you need?' (TBD)"]
-D_doctor["D_doctor:<br/>'I was thinking more about taking you to a doctor.' (TBD)"]
+D_how_much["D_how_much:<br/>'You'd really give me money?' (TBD)"] --> D_end_chat
+D_doctor["D_doctor:<br/>'Can't afford drugs, can't afford doctor.' (TBD)"] --> D_end_chat
 
 D_pupils["D_pupils:<br/>'Your pupils are huge.' (TBD)"] --> D_light
 D_light["D_light:<br/>'It's just the light.' (TBD)"] -->|Probably drugs| D_probably_drugs
 D_light -->|Can you see?| D_can_see
-D_probably_drugs["D_probably_drugs:<br/>'It's probably the drugs.' (TBD)"]
+D_probably_drugs["D_probably_drugs:<br/>'You're probably right. No use denying it.' (TBD)"] --> D_end_chat
 
 D_can_see["D_can_see:<br/>'Can you even see light properly anymore?' (TBD)"] -->|See nothing at all| D_sacrifice_see_nothing
 D_can_see -->|See the world| D_spare_see_world
@@ -46,8 +46,31 @@ D_dejected -->|Sacrifice| D_sacrifice_solution
 D_spare_motivate["D_spare_motivate:<br/>'You can still make something of your life.' (Spare)"] --> D_end_chat
 D_sacrifice_solution["D_sacrifice_solution:<br/>'I've got the solution for you.' (Sacrifice)"] --> D_end_chat
 
-D_worth_life["D_worth_life:<br/>'Isn't your life worth more than this?' (TBD)"] -->|Motivate| D_spare_motivate
-D_worth_life -->|Too late| D_sacrifice_solution
+D_worth_life["D_worth_life:<br/>'Isn't your life worth more than this?' (TBD)"] --> D_parents_worth
+D_parents_worth["D_parents_worth:<br/>'My parents didn't think I was worth anything.' (TBD)"] -->|How old?| D_how_old
+D_parents_worth -->|Parents can be shit| D_parents_shit
+D_how_old["D_how_old:<br/>'How old are you?' (TBD)"] --> D_nineteen
+D_nineteen["D_nineteen:<br/>'Just turned nineteen.' (TBD)"] -->|Remark age| D_remark_age
+D_nineteen -->|Ask parents| D_ask_parents
+D_remark_age["D_remark_age:<br/>'That's so young.' (TBD)"] --> D_life_over
+D_life_over["D_life_over:<br/>'My life was over before I had the chance to grow up.' (TBD)"] -->|Spare| D_end_chat
+D_life_over -->|Sacrifice| D_sacrifice_life_over
+D_sacrifice_life_over["D_sacrifice_life_over:<br/>'Let me give you a new ending.' (Sacrifice)"] --> D_end_chat
+D_ask_parents["D_ask_parents:<br/>'What happened with your parents?' (TBD)"] --> D_parents_kicked
+D_parents_kicked["D_parents_kicked:<br/>'They kicked me out when they realized I was flunking high school.' (TBD)"] -->|Spare| D_end_chat
+D_parents_kicked -->|Sacrifice| D_sacrifice_parents
+D_sacrifice_parents["D_sacrifice_parents:<br/>'Let me show you a place you belong.' (Sacrifice)"] --> D_end_chat
+D_parents_shit["D_parents_shit:<br/>'Parents can be shit.' (TBD)"] --> D_not_patronize
+D_not_patronize["D_not_patronize:<br/>'Don't patronize me.' (TBD)"] -->|Not patronizing| D_not_patronizing
+D_not_patronize -->|Apologize| D_apologize
+D_not_patronizing["D_not_patronizing:<br/>'I'm not patronizing you.' (TBD)"] --> D_never_sure
+D_never_sure["D_never_sure:<br/>'Can never be sure. Just give me a hit or leave me be.' (TBD)"] -->|Spare| D_end_chat
+D_never_sure -->|Sacrifice| D_sacrifice_never_sure
+D_sacrifice_never_sure["D_sacrifice_never_sure:<br/>'Here's your last hit.' (Sacrifice)"] --> D_end_chat
+D_apologize["D_apologize:<br/>'Sorry, I didn't mean to.' (TBD)"] --> D_just_coming_down
+D_just_coming_down["D_just_coming_down:<br/>'Sorry, I'm just coming down. Need another hit.' (TBD)"] -->|Spare| D_end_chat
+D_just_coming_down -->|Sacrifice| D_sacrifice_coming_down
+D_sacrifice_coming_down["D_sacrifice_coming_down:<br/>'Let me help you with that.' (Sacrifice)"] --> D_end_chat
 
 D_end_chat{"D_end_chat:<br/>End of chat"} -->|Sacrifice| D_sacrifice
 D_end_chat -->|Spare| GA_choice_target
