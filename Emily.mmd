@@ -6,7 +6,7 @@ E_influencer["E_influencer:<br/>'Are you friends with the influencer beside you?
 E_best_friend["E_best_friend:<br/>'Obviously! I'm Veronica's best friend.' (TBD)"] -->|Is it exhausting?| E_exhausting
 E_best_friend -->|Act impressed| E_impressed
 E_exhausting["E_exhausting:<br/>'Isn't it exhausting being friends with an influencer?' (TBD)"] --> E_bristle
-E_bristle["E_bristle:<br/>She bristles, clearly offended. (TBD)"]
+E_bristle["E_bristle:<br/>She bristles, clearly offended. (TBD)"] --> E_life_bff
 E_impressed["E_impressed:<br/>'Wow, that's impressive.' (TBD)"] --> E_preen
 E_preen["E_preen:<br/>She preens, soaking up the admiration. (TBD)"] -->|What's it like?| E_life_bff
 E_preen -->|Be influencer?| E_be_influencer
@@ -21,7 +21,12 @@ E_meal["E_meal:<br/>'What are you eating?' (TBD)"] --> E_most_popular
 E_most_popular["E_most_popular:<br/>'I'm tasting the most popular dishes on the menu for my friend.' (TBD)"] -->|Why?| E_why_notes
 E_most_popular -->|That's a lot of food| E_lot_food
 E_why_notes["E_why_notes:<br/>'Why?' (TBD)"] --> E_notes_stream
-E_notes_stream["E_notes_stream:<br/>'I take notes so the influencer next to me can use them in her streams.' (TBD)"]
+E_notes_stream["E_notes_stream:<br/>'I take notes so the influencer next to me can use them in her streams.' (TBD)"] --> E_dumb_job
+E_notes_stream --> E_ingenious
+E_dumb_job["E_dumb_job:<br/>'That sounds like a dumb job.' (TBD)"] --> E_negative_react
+E_ingenious["E_ingenious:<br/>'That's actually pretty ingenious.' (TBD)"] --> E_positive_react
+E_negative_react["E_negative_react:<br/>She glares, clearly insulted. (TBD)"] --> E_end_chat
+E_positive_react["E_positive_react:<br/>She beams, pleased with the compliment. (TBD)"] --> E_end_chat
 E_lot_food["E_lot_food:<br/>'That's a lot of food.' (TBD)"] --> E_doesnt_eat
 E_doesnt_eat["E_doesnt_eat:<br/>'I don't eat it all. My friend needs to watch her figure.' (TBD)"] -->|Comment on waste| E_wasteful
 E_doesnt_eat -->|Comment on health| E_health
