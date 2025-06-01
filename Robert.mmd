@@ -1,0 +1,25 @@
+flowchart TD
+direction LR
+
+%% ---------- ROBERT (SS_Ro_*) ----------
+SS_Ro_greet["SS_Ro_greet:<br/>Robert: 'What do you want?'"] -->|Mechanic| SS_Ro_mech
+SS_Ro_greet -->|Timing| SS_Ro_time
+SS_Ro_greet -->|Leave| SS_Ro_leave
+
+%% --- Branch 1 : Mechanic ---
+SS_Ro_mech["SS_Ro_mech:<br/>Nathan: 'Thought you were waiting for a mechanic.'"] --> SS_Ro_mech_R
+SS_Ro_mech_R["SS_Ro_mech_R:<br/>Robert: 'Didn't notice. Guess I have to change it myself.'"] --> SS_Ro_mech_entity
+SS_Ro_mech_entity["SS_Ro_mech_entity:<br/>Entity: 'And suddenly… you are a mechanic, Nathan!'"] --> SS_Ro_mech_kill
+SS_Ro_mech_kill["SS_Ro_mech_kill:<br/>Nathan: 'I can help—where is the jack?' (Kill Robert)"] --> SS_Ro_end_chat
+
+%% --- Branch 2 : Timing ---
+SS_Ro_time["SS_Ro_time:<br/>Nathan: 'Things happen at the worst times.'"] --> SS_Ro_time_R
+SS_Ro_time_R["SS_Ro_time_R:<br/>Robert: 'Murphy's Law. No jack and I need to go.'"] --> SS_Ro_time_entity
+SS_Ro_time_entity["SS_Ro_time_entity:<br/>Entity: 'He lives near you, right, Nathan?'"] --> SS_Ro_time_kill
+SS_Ro_time_kill["SS_Ro_time_kill:<br/>Nathan: 'You are in luck—I live around the corner. Let's grab mine.' (Kill Robert)"] --> SS_Ro_end_chat
+
+%% --- Branch 3 : Leave ---
+SS_Ro_leave["SS_Ro_leave:<br/>Nathan: 'Sorry, thought you were someone else. Have a good day.'"] --> SS_Ro_end_chat
+
+SS_Ro_end_chat{"SS_Ro_end_chat:<br/>End of chat"} -->|Sacrifice| global_usePower
+SS_Ro_end_chat -->|Spare| SS_choice_target

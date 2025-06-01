@@ -1,0 +1,25 @@
+flowchart TD
+direction LR
+
+%% ---------- MATT (SS_Mat_*) ----------
+SS_Mat_greet["SS_Mat_greet:<br/>Matt: 'Sorry, I have to watch my little brother.'"] -->|Ice&nbsp;Cream| SS_Mat_ice
+SS_Mat_greet -->|Sprinkler| SS_Mat_sprink
+SS_Mat_greet -->|Keep&nbsp;going| SS_Mat_leave
+
+%% --- Branch 1 : Ice Cream ---
+SS_Mat_ice["SS_Mat_ice:<br/>Nathan: 'Thinking of grabbing ice cream. Favorite flavor?'"] --> SS_Mat_ice_M
+SS_Mat_ice_M["SS_Mat_ice_M:<br/>Matt: 'No need, happy to help.'"] --> SS_Mat_ice_entity
+SS_Mat_ice_entity["SS_Mat_ice_entity:<br/>Entity: 'This kid smells good...'"] --> SS_Mat_ice_kill
+SS_Mat_ice_kill["SS_Mat_ice_kill:<br/>Nathan: 'Good kid. Hey, look over there!' (Kill Matt)"] --> SS_Mat_end_chat
+
+%% --- Branch 2 : Sprinkler ---
+SS_Mat_sprink["SS_Mat_sprink:<br/>Nathan: 'This heat is awful. Mind if I run through the sprinkler?'"] --> SS_Mat_sprink_M
+SS_Mat_sprink_M["SS_Mat_sprink_M:<br/>Matt: 'Sure, just leave the kids alone.'"] --> SS_Mat_sprink_entity
+SS_Mat_sprink_entity["SS_Mat_sprink_entity:<br/>Entity: 'Yeah, sure we will... right, Nathan?'"] --> SS_Mat_sprink_kill
+SS_Mat_sprink_kill["SS_Mat_sprink_kill:<br/>Nathan: 'Hold my phone a sec.' (Kill Matt)"] --> SS_Mat_end_chat
+
+%% --- Branch 3 : Keep Going ---
+SS_Mat_leave["SS_Mat_leave:<br/>Nathan: 'Yeah, it sucks. Thanks for the help!'"] --> SS_Mat_end_chat
+
+SS_Mat_end_chat{"SS_Mat_end_chat:<br/>End of chat"} -->|Sacrifice| global_usePower
+SS_Mat_end_chat -->|Spare| SS_choice_target

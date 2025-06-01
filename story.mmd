@@ -35,17 +35,21 @@ flowchart TD
 
     %% RICH NEIGHBORHOOD
     RN_start["RN_start:<br/>richNeighborhood<br/>The air is thick with money and manicured hedges."] --> RN_choice_target
-    RN_choice_target{"RN_choice_target:<br/>Choose a target"} -->|Stephan| RN_St_greet
+    RN_choice_target{"RN_choice_target:<br/>Choose a target"} -->|Stephen| RN_St_greet
     RN_choice_target -->|Mary| RN_Ma_greet
     RN_choice_target -->|Charles| RN_Cha_greet
     global_usePower --> RN_choice_target
 
     %% INDUSTRIAL STREET
     IS_start["IS_start:<br/>industrialStreet<br/>The street hums with machinery and the scent of oil."] --> IS_choice_target
-    IS_choice_target{"IS_choice_target:<br/>Choose a target"}
+    IS_choice_target{"IS_choice_target:<br/>Choose a target"} -->|Tony| IS_To_greet
+    IS_choice_target -->|Clara| IS_Cla_greet
+    IS_choice_target -->|Marco| IS_Mar_greet
     global_usePower --> IS_choice_target
 
     %% SUBURBAN STREET
     SS_start["SS_start:<br/>suburbanStreet<br/>Lawns are neat, fences white, and secrets buried deep."] --> SS_choice_target
-    SS_choice_target{"SS_choice_target:<br/>Choose a target"}
+    SS_choice_target{"SS_choice_target:<br/>Choose a target"} -->|Matt| SS_Mat_greet
+    SS_choice_target -->|Helen| SS_He_greet
+    SS_choice_target -->|Robert| SS_Ro_greet
     global_usePower --> SS_choice_target

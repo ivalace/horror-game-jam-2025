@@ -1,0 +1,31 @@
+flowchart TD
+direction LR
+
+%% ---------- MARCO (IS_Mar_*) ----------
+IS_Mar_greet["IS_Mar_greet:<br/>Marco: 'Sorry, man, I am in a rush.'"] -->|Concern| IS_Mar_concern
+IS_Mar_greet -->|Thief| IS_Mar_thief
+IS_Mar_greet -->|Leave| IS_Mar_leave
+
+%% --- Branch 1 : Concern (package) ---
+IS_Mar_concern["IS_Mar_concern:<br/>Nathan: 'A package fell from your bag.'"]
+IS_Mar_concern --> IS_Mar_concern_M
+IS_Mar_concern_M["IS_Mar_concern_M:<br/>Marco: 'I stole frozen chicken for my kids.'"]
+IS_Mar_concern_M --> IS_Mar_concern_entity
+IS_Mar_concern_entity["IS_Mar_concern_entity:<br/>Entity: 'Aww, poor kids.'"]
+IS_Mar_concern_entity --> IS_Mar_concern_kill
+IS_Mar_concern_kill["IS_Mar_concern_kill:<br/>Nathan: 'Go hide, I will grab it.' (Kill Marco)"] --> IS_Mar_end_chat
+
+%% --- Branch 2 : Thief (call-out) ---
+IS_Mar_thief["IS_Mar_thief:<br/>Nathan: 'A-ha! Someone is misbehaving.'"]
+IS_Mar_thief --> IS_Mar_thief_M
+IS_Mar_thief_M["IS_Mar_thief_M:<br/>Marco: 'Please, keep it down. It is for my kids.'"]
+IS_Mar_thief_M --> IS_Mar_thief_entity
+IS_Mar_thief_entity["IS_Mar_thief_entity:<br/>Entity: 'Thievery must be punished.'"]
+IS_Mar_thief_entity --> IS_Mar_thief_kill
+IS_Mar_thief_kill["IS_Mar_thief_kill:<br/>Nathan: 'A caring father… Let me help.' (Kill Marco)"] --> IS_Mar_end_chat
+
+%% --- Branch 3 : Leave ---
+IS_Mar_leave["IS_Mar_leave:<br/>Nathan: 'Honestly, that is none of my business.'"] --> IS_Mar_end_chat
+
+IS_Mar_end_chat{"IS_Mar_end_chat:<br/>End of chat"} -->|Sacrifice| global_usePower
+IS_Mar_end_chat -->|Spare| IS_choice_target

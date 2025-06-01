@@ -1,0 +1,31 @@
+flowchart TD
+direction LR
+
+%% ---------- HELEN (SS_He_*) ----------
+SS_He_greet["SS_He_greet:<br/>Helen: 'Good day, sir. Can I help you?'"] -->|Water| SS_He_water
+SS_He_greet -->|Soil| SS_He_soil
+SS_He_greet -->|Nevermind| SS_He_leave
+
+%% --- Branch 1 : Water ---
+SS_He_water["SS_He_water:<br/>Nathan: 'If you keep watering that much, the plant will die.'"]
+SS_He_water --> SS_He_water_H
+SS_He_water_H["SS_He_water_H:<br/>Helen: 'I have watered like this since I planted it three months ago.'"]
+SS_He_water_H --> SS_He_water_entity
+SS_He_water_entity["SS_He_water_entity:<br/>Entity: 'Stupid old hag.'"]
+SS_He_water_entity --> SS_He_water_kill
+SS_He_water_kill["SS_He_water_kill:<br/>Nathan: 'The damage is subtle—come look here.' (Kill Helen)"] --> SS_He_end_chat
+
+%% --- Branch 2 : Soil ---
+SS_He_soil["SS_He_soil:<br/>Nathan: 'Water is pooling; the soil is not permeable enough.'"]
+SS_He_soil --> SS_He_soil_H
+SS_He_soil_H["SS_He_soil_H:<br/>Helen: 'Maybe that is why the previous plant died. I am so silly.'"]
+SS_He_soil_H --> SS_He_soil_entity
+SS_He_soil_entity["SS_He_soil_entity:<br/>Entity: 'Time to teach, Nathan.'"]
+SS_He_soil_entity --> SS_He_soil_kill
+SS_He_soil_kill["SS_He_soil_kill:<br/>Nathan: 'It is never too late to learn. Let me help with the others.' (Kill Helen)"] --> SS_He_end_chat
+
+%% --- Branch 3 : Nevermind ---
+SS_He_leave["SS_He_leave:<br/>Nathan: 'Actually, with this heat more water might be fine. I am late for my next gig. Good day!'"] --> SS_He_end_chat
+
+SS_He_end_chat{"SS_He_end_chat:<br/>End of chat"} -->|Sacrifice| global_usePower
+SS_He_end_chat -->|Spare| SS_choice_target
