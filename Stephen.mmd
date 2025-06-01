@@ -1,0 +1,25 @@
+flowchart TD
+direction LR
+RN_St_greet["RN_St_greet:<br/>Stephen: &quot;Can't you see I'm busy?&quot;"] -->|Bank| RN_St_bank
+RN_St_greet -->|Living| RN_St_living
+RN_St_greet -->|Nevermind| RN_St_leave
+
+%% --- Branch 1 : Bank ---
+RN_St_bank["RN_St_bank:<br/>Nathan: &quot;I'm looking for a bank.&quot;"] --> RN_St_bank_S1
+RN_St_bank_S1["RN_St_bank_S1:<br/>Stephen: &quot;Across the park, along the path.&quot;"] --> RN_St_bank_N7
+RN_St_bank_N7["RN_St_bank_N7:<br/>Nathan: &quot;Just to be clear — seven figures.&quot;"] --> RN_St_bank_S2
+RN_St_bank_S2["RN_St_bank_S2:<br/>Stephen: &quot;Oh... maybe I can help with that...&quot;"] --> RN_St_bank_entity
+RN_St_bank_entity["RN_St_bank_entity:<br/>Entity: &quot;Nathan... this is your chance.&quot;"] --> RN_St_bank_kill
+RN_St_bank_kill["RN_St_bank_kill:<br/>Nathan: &quot;Can I buy you a coffee?&quot; (Kill Stephen)"] --> RN_St_end_chat
+
+%% --- Branch 2 : Living ---
+RN_St_living["RN_St_living:<br/>Nathan: &quot;You seem wealthy — what do you do for a living?&quot;"] --> RN_St_living_S
+RN_St_living_S["RN_St_living_S:<br/>Stephen: &quot;None of your business. Leave me alone.&quot;"] --> RN_St_living_entity
+RN_St_living_entity["RN_St_living_entity:<br/>Entity: &quot;Arrogant types taste best...&quot;"] --> RN_St_living_kill
+RN_St_living_kill["RN_St_living_kill:<br/>Nathan: &quot;Get in the car, no questions.&quot; (Kill Stephen)"] --> RN_St_end_chat
+
+%% --- Branch 3 : Nevermind ---
+RN_St_leave["RN_St_leave:<br/>Nathan: &quot;Never mind — go to your meeting.&quot;"] --> RN_St_end_chat
+
+RN_St_end_chat{"RN_St_end_chat:<br/>End of chat"} -->|Sacrifice| global_usePower
+RN_St_end_chat -->|Spare| RN_choice_target

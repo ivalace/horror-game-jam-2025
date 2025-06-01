@@ -1,0 +1,24 @@
+flowchart TD
+direction LR
+
+RN_Cha_greet["RN_Cha_greet:<br/>Charles: 'What are you looking at? Do I owe you money?'"] -->|Job| RN_Cha_job
+RN_Cha_greet -->|SIM&nbsp;card| RN_Cha_sim
+RN_Cha_greet -->|Leave| RN_Cha_leave
+
+%% --- Branch 1 : Job ---
+RN_Cha_job["RN_Cha_job:<br/>Nathan: 'Actually, I am looking for a job…'"] --> RN_Cha_job_Charles
+RN_Cha_job_Charles["RN_Cha_job_Charles:<br/>Charles: 'I need a body-guard, you look crazy enough.'"] --> RN_Cha_job_entity
+RN_Cha_job_entity["RN_Cha_job_entity:<br/>Entity: 'This is an easy one, Nathan…'"] --> RN_Cha_job_kill
+RN_Cha_job_kill["RN_Cha_job_kill:<br/>Nathan: 'Let's talk someplace quiet.' (Kill Charles)"] --> RN_Cha_end_chat
+
+%% --- Branch 2 : SIM card ---
+RN_Cha_sim["RN_Cha_sim:<br/>Nathan: 'I just need a SIM card.'"] --> RN_Cha_sim_Charles
+RN_Cha_sim_Charles["RN_Cha_sim_Charles:<br/>Charles: 'Mine always get lost—I'll show you a place.'"] --> RN_Cha_sim_entity
+RN_Cha_sim_entity["RN_Cha_sim_entity:<br/>Entity: 'A 'SIM card' would be good for us!'"] --> RN_Cha_sim_kill
+RN_Cha_sim_kill["RN_Cha_sim_kill:<br/>Nathan: 'I'd appreciate that.' (Kill Charles)"] --> RN_Cha_end_chat
+
+%% --- Branch 3 : Leave ---
+RN_Cha_leave["RN_Cha_leave:<br/>Nathan: 'Actually, I have to go.'"] --> RN_Cha_end_chat
+
+RN_Cha_end_chat{"RN_Cha_end_chat:<br/>End of chat"} -->|Sacrifice| global_usePower
+RN_Cha_end_chat -->|Spare| RN_choice_target
