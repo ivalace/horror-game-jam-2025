@@ -11,30 +11,35 @@ MT_N_snap_poison -->|Understand| MT_N_understand_rage
 MT_N_chill["MT_N_chill:<br/>'Chill, man.' (TBD)"] --> MT_N_rant_poison
 MT_N_rant_poison["MT_N_rant_poison:<br/>'I'm going to poison everyone and blow up the theater!' (TBD)"] -->|Sacrifice| MT_N_sacrifice_save
 MT_N_rant_poison -->|Spare| MT_N_spare_rage
-MT_N_sacrifice_save["MT_N_sacrifice_save:<br/>'I can't let you hurt anyone.' (Sacrifice)"] --> global_usePower
-MT_N_spare_rage["MT_N_spare_rage:<br/>'I hope you cool off.' (Spare)"] --> MT_choice_target
+MT_N_sacrifice_save["MT_N_sacrifice_save:<br/>'I can't let you hurt anyone.' (Sacrifice)"] --> MT_N_end_chat
+MT_N_spare_rage["MT_N_spare_rage:<br/>'I hope you cool off.' (Spare)"] --> MT_N_end_chat
 MT_N_understand_rage["MT_N_understand_rage:<br/>'I get the rage.' (TBD)"] --> MT_N_how_understand
 MT_N_how_understand["MT_N_how_understand:<br/>'How could you possibly understand?' (TBD)"] -->|Vengeance| MT_N_sacrifice_vengeance
 MT_N_how_understand -->|Dark rage| MT_N_spare_dark
-MT_N_sacrifice_vengeance["MT_N_sacrifice_vengeance:<br/>'I'm on a quest for vengeance.' (Sacrifice)"] --> global_usePower
-MT_N_spare_dark["MT_N_spare_dark:<br/>'I just know how dark rage can get.' (Spare)"] --> MT_choice_target
+MT_N_sacrifice_vengeance["MT_N_sacrifice_vengeance:<br/>'I'm on a quest for vengeance.' (Sacrifice)"] --> MT_N_end_chat
+MT_N_spare_dark["MT_N_spare_dark:<br/>'I just know how dark rage can get.' (Spare)"] --> MT_N_end_chat
 MT_N_rather_do["MT_N_rather_do:<br/>'What would you rather be doing?' (TBD)"] --> MT_N_nothing_else
 MT_N_nothing_else["MT_N_nothing_else:<br/>'If I had something else, I'd do it.' (TBD)"] -->|Spare| MT_N_spare_nothing
 MT_N_nothing_else -->|Sacrifice| MT_N_sacrifice_nothing
-MT_N_spare_nothing["MT_N_spare_nothing:<br/>'Hope you find something better.' (Spare)"] --> MT_choice_target
-MT_N_sacrifice_nothing["MT_N_sacrifice_nothing:<br/>'Let me give you a way out.' (Sacrifice)"] --> global_usePower
+MT_N_spare_nothing["MT_N_spare_nothing:<br/>'Hope you find something better.' (Spare)"] --> MT_N_end_chat
+MT_N_sacrifice_nothing["MT_N_sacrifice_nothing:<br/>'Let me give you a way out.' (Sacrifice)"] --> MT_N_end_chat
 MT_N_way_out["MT_N_way_out:<br/>'Want a way out?' (TBD)"] --> MT_N_taken_it
 MT_N_taken_it["MT_N_taken_it:<br/>'If there was one, I'd have taken it.' (TBD)"] -->|Easy way| MT_N_sacrifice_easy
 MT_N_taken_it -->|Advice| MT_N_spare_advice
-MT_N_sacrifice_easy["MT_N_sacrifice_easy:<br/>'Let me offer you the easy way out.' (Sacrifice)"] --> global_usePower
-MT_N_spare_advice["MT_N_spare_advice:<br/>'Try looking for something better. There's always a way.' (Spare)"] --> MT_choice_target
+MT_N_sacrifice_easy["MT_N_sacrifice_easy:<br/>'Let me offer you the easy way out.' (Sacrifice)"] --> MT_N_end_chat
+MT_N_spare_advice["MT_N_spare_advice:<br/>'Try looking for something better. There's always a way.' (Spare)"] --> MT_N_end_chat
 MT_N_double_down["MT_N_double_down:<br/>'Yeah, you could be scrubbing sewers covered in shit.' (TBD)"] --> MT_N_poison_soda
 MT_N_poison_soda["MT_N_poison_soda:<br/>'I'm poisoning the soda fountain when my break's over.' (TBD)"] -->|Sacrifice| MT_N_sacrifice_soda
 MT_N_poison_soda -->|Spare| MT_N_spare_soda
-MT_N_sacrifice_soda["MT_N_sacrifice_soda:<br/>'Not on my watch.' (Sacrifice)"] --> global_usePower
-MT_N_spare_soda["MT_N_spare_soda:<br/>'I hope you cool off.' (Spare)"] --> MT_choice_target
+MT_N_sacrifice_soda["MT_N_sacrifice_soda:<br/>'Not on my watch.' (Sacrifice)"] --> MT_N_end_chat
+MT_N_spare_soda["MT_N_spare_soda:<br/>'I hope you cool off.' (Spare)"] --> MT_N_end_chat
 MT_N_backtrack["MT_N_backtrack:<br/>'That's not what I meant.' (TBD)"] --> MT_N_leave_alone
 MT_N_leave_alone["MT_N_leave_alone:<br/>He shakes his head. 'Just leave me alone.' (TBD)"] -->|Sacrifice| MT_N_sacrifice_leave
 MT_N_leave_alone -->|Spare| MT_N_spare_leave
-MT_N_sacrifice_leave["MT_N_sacrifice_leave:<br/>'If you insist.' (Sacrifice)"] --> global_usePower
-MT_N_spare_leave["MT_N_spare_leave:<br/>'Take care.' (Spare)"] --> MT_choice_target
+MT_N_sacrifice_leave["MT_N_sacrifice_leave:<br/>'If you insist.' (Sacrifice)"] --> MT_N_end_chat
+MT_N_spare_leave["MT_N_spare_leave:<br/>'Take care.' (Spare)"] --> MT_N_end_chat
+
+MT_N_end_chat{"MT_N_end_chat:<br/>End of chat"} -->|Sacrifice| MT_N_sacrifice
+MT_N_end_chat -->|Spare| MT_choice_target
+
+MT_N_sacrifice["MT_N_sacrifice:<br/>Sacrifice"] --> global_usePower

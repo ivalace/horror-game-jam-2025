@@ -22,8 +22,8 @@ D_probably_drugs["D_probably_drugs:<br/>'It's probably the drugs.' (TBD)"]
 
 D_can_see["D_can_see:<br/>'Can you even see light properly anymore?' (TBD)"] -->|See nothing at all| D_sacrifice_see_nothing
 D_can_see -->|See the world| D_spare_see_world
-D_sacrifice_see_nothing["D_sacrifice_see_nothing:<br/>'Want something that will make you see nothing at all?' (Sacrifice)"] --> global_usePower
-D_spare_see_world["D_spare_see_world:<br/>'Maybe it's time to see the world for what it is.' (Spare)"] --> GA_choice_target
+D_sacrifice_see_nothing["D_sacrifice_see_nothing:<br/>'Want something that will make you see nothing at all?' (Sacrifice)"] --> D_end_chat
+D_spare_see_world["D_spare_see_world:<br/>'Maybe it's time to see the world for what it is.' (Spare)"] --> D_end_chat
 
 %% “You look far gone” track
 D_far_gone["D_far_gone:<br/>'You look pretty far gone.' (TBD)"] --> D_not_enough
@@ -37,14 +37,19 @@ D_nothing_else -->|Probably right| D_probably_right
 D_convince_beauty["D_convince_beauty:<br/>'There's still beauty worth living for.' (TBD)"] --> D_caustic_laugh
 D_caustic_laugh["D_caustic_laugh:<br/>He laughs caustically. (TBD)"] -->|Rehab advice| D_rehab_advice
 D_caustic_laugh -->|Sacrifice| D_sacrifice_memory
-D_rehab_advice["D_rehab_advice:<br/>'There's a rehab center in the city. You could try.' (Spare)"] --> GA_choice_target
-D_sacrifice_memory["D_sacrifice_memory:<br/>'Let me put you out of your memory.' (Sacrifice)"] --> global_usePower
+D_rehab_advice["D_rehab_advice:<br/>'There's a rehab center in the city. You could try.' (Spare)"] --> D_end_chat
+D_sacrifice_memory["D_sacrifice_memory:<br/>'Let me put you out of your memory.' (Sacrifice)"] --> D_end_chat
 
 D_probably_right["D_probably_right:<br/>'You're probably right.' (TBD)"] --> D_dejected
 D_dejected["D_dejected:<br/>'Was hoping an adult would have a better answer.' (TBD)"] -->|Motivate| D_spare_motivate
 D_dejected -->|Sacrifice| D_sacrifice_solution
-D_spare_motivate["D_spare_motivate:<br/>'You can still make something of your life.' (Spare)"] --> GA_choice_target
-D_sacrifice_solution["D_sacrifice_solution:<br/>'I've got the solution for you.' (Sacrifice)"] --> global_usePower
+D_spare_motivate["D_spare_motivate:<br/>'You can still make something of your life.' (Spare)"] --> D_end_chat
+D_sacrifice_solution["D_sacrifice_solution:<br/>'I've got the solution for you.' (Sacrifice)"] --> D_end_chat
 
 D_worth_life["D_worth_life:<br/>'Isn't your life worth more than this?' (TBD)"] -->|Motivate| D_spare_motivate
 D_worth_life -->|Too late| D_sacrifice_solution
+
+D_end_chat{"D_end_chat:<br/>End of chat"} -->|Sacrifice| D_sacrifice
+D_end_chat -->|Spare| GA_choice_target
+
+D_sacrifice["D_sacrifice:<br/>Sacrifice"] --> global_usePower

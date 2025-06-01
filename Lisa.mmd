@@ -8,15 +8,17 @@ L_snap_pic -->|Evade| L_name_evade
 
 L_name_truth["L_name_truth:<br/>&quot;Nathan? Nice! Are you from here?&quot;"] -->|Specific| L_local_specific
 L_name_truth -->|Hedge| L_local_hedge
-L_local_specific["L_local_specific:<br/>You name a neighborhood."] --> L_zach_interrupt
-L_local_hedge["L_local_hedge:<br/>&quot;Spoken like a true local!&quot;"] --> L_zach_interrupt
+L_local_specific["L_local_specific:<br/>You name a neighborhood."] --> L_end_chat
+L_local_hedge["L_local_hedge:<br/>&quot;Spoken like a true local!&quot;"] --> L_end_chat
 
-L_name_evade["L_name_evade:<br/>Lisa introduces herself."] --> L_zach_interrupt
+L_name_evade["L_name_evade:<br/>Lisa introduces herself."] --> L_end_chat
 
-L_decline["L_decline:<br/>&quot;Sorry to bother you.&quot;"] -->|"Chat anyway"| L_name_evade
-L_decline -->|Sacrifice| L_sacrifice
+L_decline["L_decline:<br/>&quot;Sorry to bother you.&quot;"] --> L_end_chat
 
 L_zach_interrupt["L_zach_interrupt:<br/>Zach: &quot;Enough chatting with our food.&quot;"] -->|Sacrifice| L_sacrifice
 L_zach_interrupt -->|Spare| TC_choice_target
 
-L_sacrifice["L_sacrifice:<br/>Entity is pleased"] --> global_usePower
+L_end_chat{"L_end_chat:<br/>End of chat"} -->|Sacrifice| L_sacrifice
+L_end_chat -->|Spare| TC_choice_target
+
+L_sacrifice["L_sacrifice:<br/>Sacrifice"] --> global_usePower

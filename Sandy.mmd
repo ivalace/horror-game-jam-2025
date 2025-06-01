@@ -17,8 +17,13 @@ S_ride_high["S_ride_high:<br/>She smiles. 'Don't knock it till you try it. Want 
 S_ride_high -->|Sacrifice| S_sacrifice_drug
 S_cant_remember["S_cant_remember:<br/>'Can't remember life before the high.' (TBD)"] -->|Spare| S_spare_rehab
 S_cant_remember -->|Sacrifice| S_sacrifice_drug
-S_spare_rehab["S_spare_rehab:<br/>'I hope you find a better life. There's a rehab center in the city.' (Spare)"] --> GA_choice_target
-S_sacrifice_drug["S_sacrifice_drug:<br/>'Let me offer you a greater drug.' (Sacrifice)"] --> global_usePower
+S_spare_rehab["S_spare_rehab:<br/>'I hope you find a better life. There's a rehab center in the city.' (Spare)"] --> S_end_chat
+S_sacrifice_drug["S_sacrifice_drug:<br/>'Let me offer you a greater drug.' (Sacrifice)"] --> S_end_chat
 S_want_more["S_want_more:<br/>'Ever wanted more from life?' (TBD)"] --> S_cant_remember
 S_appearance["S_appearance:<br/>'You look kind of sickly.' (TBD)"] --> S_brush_off
 S_brush_off["S_brush_off:<br/>'Price of the high. The important parts still feel good.' (TBD)"]
+
+S_end_chat{"S_end_chat:<br/>End of chat"} -->|Sacrifice| S_sacrifice
+S_end_chat -->|Spare| GA_choice_target
+
+S_sacrifice["S_sacrifice:<br/>Sacrifice"] --> global_usePower

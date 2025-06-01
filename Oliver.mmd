@@ -23,20 +23,23 @@ MT_O_corpses -->|Bodies don't do much| MT_O_bodies_bland
 MT_O_coroner["MT_O_coroner:<br/>'Maybe you should become a coroner.' (TBD)"] --> MT_O_love_cinema
 MT_O_love_cinema["MT_O_love_cinema:<br/>He sighs. 'I love cinema too much to abandon it, even if it's all trash.' (TBD)"] -->|Spare| MT_O_spare_better_movie
 MT_O_love_cinema -->|Sacrifice| MT_O_sacrifice_film_die
-MT_O_spare_better_movie["MT_O_spare_better_movie:<br/>'Hope a better movie comes along soon.' (Spare)"] --> MT_choice_target
-MT_O_sacrifice_film_die["MT_O_sacrifice_film_die:<br/>'I've got a film that's to die for.' (Sacrifice)"] --> global_usePower
+MT_O_spare_better_movie["MT_O_spare_better_movie:<br/>'Hope a better movie comes along soon.' (Spare)"] --> MT_O_end_chat
+MT_O_spare_new_art["MT_O_spare_new_art:<br/>'Maybe it's time to find a new form of art to review.' (Spare)"] --> MT_O_end_chat
+MT_O_spare_rare_gem["MT_O_spare_rare_gem:<br/>'Hope you find one soon.' (Spare)"] --> MT_O_end_chat
+MT_O_spare_sully["MT_O_spare_sully:<br/>'Take care.' (Spare)"] --> MT_O_end_chat
+MT_O_sacrifice_film_die["MT_O_sacrifice_film_die:<br/>'I've got a film that's to die for.' (Sacrifice)"] --> MT_O_end_chat
+MT_O_sacrifice_no_diff["MT_O_sacrifice_no_diff:<br/>'Let me show you something truly different.' (Sacrifice)"] --> MT_O_end_chat
+MT_O_sacrifice_rare_gem["MT_O_sacrifice_rare_gem:<br/>'Let me show you a gem you'll never forget.' (Sacrifice)"] --> MT_O_end_chat
+MT_O_sacrifice_sully["MT_O_sacrifice_sully:<br/>'Let me show you true passion.' (Sacrifice)"] --> MT_O_end_chat
 MT_O_bodies_bland["MT_O_bodies_bland:<br/>'The bodies don't do much.' (TBD)"] --> MT_O_movies_no_diff
 MT_O_movies_no_diff["MT_O_movies_no_diff:<br/>He chuckles. 'Movies feel no different.' (TBD)"] -->|Spare| MT_O_spare_new_art
 MT_O_movies_no_diff -->|Sacrifice| MT_O_sacrifice_no_diff
-MT_O_spare_new_art["MT_O_spare_new_art:<br/>'Maybe it's time to find a new form of art to review.' (Spare)"] --> MT_choice_target
-MT_O_sacrifice_no_diff["MT_O_sacrifice_no_diff:<br/>'Let me show you something truly different.' (Sacrifice)"] --> global_usePower
 MT_O_so_bad["MT_O_so_bad:<br/>'Is it really that bad?' (TBD)"] --> MT_O_rare_gems
 MT_O_rare_gems["MT_O_rare_gems:<br/>'It's worth the slog for the rare gems.' (TBD)"] -->|Spare| MT_O_spare_rare_gem
 MT_O_rare_gems -->|Sacrifice| MT_O_sacrifice_rare_gem
-MT_O_spare_rare_gem["MT_O_spare_rare_gem:<br/>'Hope you find one soon.' (Spare)"] --> MT_choice_target
-MT_O_sacrifice_rare_gem["MT_O_sacrifice_rare_gem:<br/>'Let me show you a gem you'll never forget.' (Sacrifice)"] --> global_usePower
 MT_O_dont_like["MT_O_dont_like:<br/>'I don't like movies enough for that.' (TBD)"] --> MT_O_sully_art
 MT_O_sully_art["MT_O_sully_art:<br/>He nods. 'Best not to sully the art with a lack of passion.' (TBD)"] -->|Spare| MT_O_spare_sully
 MT_O_sully_art -->|Sacrifice| MT_O_sacrifice_sully
-MT_O_spare_sully["MT_O_spare_sully:<br/>'Take care.' (Spare)"] --> MT_choice_target
-MT_O_sacrifice_sully["MT_O_sacrifice_sully:<br/>'Let me show you true passion.' (Sacrifice)"] --> global_usePower
+MT_O_end_chat{"MT_O_end_chat:<br/>End of chat"} -->|Sacrifice| MT_O_sacrifice
+MT_O_end_chat -->|Spare| MT_choice_target
+MT_O_sacrifice["MT_O_sacrifice:<br/>Sacrifice"] --> global_usePower

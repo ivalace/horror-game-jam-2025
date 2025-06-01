@@ -9,21 +9,21 @@ V_sell_product -->|Reject product| V_product_reject
 V_product_question["V_product_question:<br/>You ask a question about her product. (TBD)"] --> V_product_vapid
 V_product_vapid["V_product_vapid:<br/>She becomes even more vapid and animated, gushing about the product. (TBD)"] -->|Promise to buy later| V_promise_spare
 V_product_vapid -->|Buy if she comes| V_buy_sacrifice
-V_promise_spare["V_promise_spare:<br/>'I'll totally buy it once I'm home!' You spare her."] --> FA_choice_target
-V_buy_sacrifice["V_buy_sacrifice:<br/>'I'll buy it if you come with me.' (She agrees, unaware of her fate.)"] --> V_sacrifice
+V_promise_spare["V_promise_spare:<br/>'I'll totally buy it once I'm home!' You spare her."] --> V_end_chat
 V_product_reject["V_product_reject:<br/>You reject her product. (TBD)"] --> V_product_annoyed
-V_product_annoyed["V_product_annoyed:<br/>She looks annoyed and rolls her eyes. (TBD)"] -->|Sacrifice| V_sacrifice
-V_product_annoyed -->|Spare| FA_choice_target
+V_product_annoyed["V_product_annoyed:<br/>She looks annoyed and rolls her eyes. (TBD)"] --> V_end_chat
 V_phone["V_phone:<br/>You mention her phone use. (TBD)"] --> V_phone_negative
 V_phone_negative["V_phone_negative:<br/>She glares, offended. (TBD)"] --> V_old_man
 V_old_man["V_old_man:<br/>'Okay, old man. Have you been living under a rock?' (TBD)"] -->|"No, I've been in prison"| V_prison
 V_old_man -->|Snarky screen comment| V_snarky_screen
 V_prison["V_prison:<br/>'No, I've been in prison.' (TBD)"] --> V_prison_scoff
-V_prison_scoff["V_prison_scoff:<br/>She scoffs. 'You? Please. No way you're scary enough for prison.'"] -->|Sacrifice| V_sacrifice_prison
-V_prison_scoff -->|Spare| FA_choice_target
-V_sacrifice_prison["V_sacrifice_prison:<br/>You show her how scary you can be. (Sacrifice)"] --> global_usePower
+V_prison_scoff["V_prison_scoff:<br/>She scoffs. 'You? Please. No way you're scary enough for prison.'"] --> V_end_chat
 V_snarky_screen["V_snarky_screen:<br/>'At least I'm not wasting my life glued to a screen.' (TBD)"] --> V_ignores_phone
-V_ignores_phone["V_ignores_phone:<br/>She ignores you, talking to her phone about the old man lecturing her."] -->|Leave her be| FA_choice_target
-V_ignores_phone -->|Sacrifice| V_sacrifice_phone
-V_sacrifice_phone["V_sacrifice_phone:<br/>You silence her for good. (Sacrifice)"] --> global_usePower
-V_sacrifice["V_sacrifice:<br/>Entity is amused by the rejection."] --> global_usePower
+V_ignores_phone["V_ignores_phone:<br/>She ignores you, talking to her phone about the old man lecturing her."] --> V_end_chat
+V_buy_sacrifice["V_buy_sacrifice:<br/>'I'll buy it if you come with me.' (She agrees, unaware of her fate.)"] --> V_end_chat
+V_sacrifice_prison["V_sacrifice_prison:<br/>You show her how scary you can be. (Sacrifice)"] --> V_end_chat
+V_sacrifice_phone["V_sacrifice_phone:<br/>You silence her for good. (Sacrifice)"] --> V_end_chat
+V_sacrifice["V_sacrifice:<br/>Sacrifice"] --> global_usePower
+
+V_end_chat{"V_end_chat:<br/>End of chat"} -->|Sacrifice| V_sacrifice
+V_end_chat -->|Spare| FA_choice_target

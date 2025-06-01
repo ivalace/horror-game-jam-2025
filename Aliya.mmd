@@ -31,14 +31,13 @@ MT_A_invested["MT_A_invested:<br/>'I'm a film student. Studying to be a director
 MT_A_not_actress["MT_A_not_actress:<br/>'Why not be an actress?' (TBD)"] --> MT_A_tell_stories
 MT_A_tell_stories["MT_A_tell_stories:<br/>'I want to tell stories everyone else is too afraid to tell, not act in someone else's work.' (TBD)"] -->|Offer story| MT_A_sacrifice_story
 MT_A_tell_stories -->|Wish her well| MT_A_spare_story
-MT_A_sacrifice_story["MT_A_sacrifice_story:<br/>'Let me offer you a story unlike any other.' (Sacrifice)"] --> global_usePower
-MT_A_spare_story["MT_A_spare_story:<br/>'I hope you make a story to die for someday.' (Spare)"] --> MT_choice_target
+MT_A_sacrifice_story["MT_A_sacrifice_story:<br/>'Let me offer you a story unlike any other.' (Sacrifice)"] --> MT_A_end_chat
+MT_A_spare_story["MT_A_spare_story:<br/>'I hope you make a story to die for someday.' (Spare)"] --> MT_A_end_chat
 MT_A_favorite["MT_A_favorite:<br/>'My favorite is Shawshank Redemption.' (TBD)"] --> MT_A_entity_laugh
 MT_A_entity_laugh["MT_A_entity_laugh:<br/>The Entity laughs. 'What's so funny?' (TBD)"] -->|Escaped prisoner| MT_A_escaped
 MT_A_entity_laugh -->|Also favorite| MT_A_also_fav
-MT_A_escaped["MT_A_escaped:<br/>'I'm an escaped prisoner myself.' (TBD)"] -->|Spare| MT_choice_target
-MT_A_escaped -->|Sacrifice| MT_A_sacrifice_escaped
-MT_A_sacrifice_escaped["MT_A_sacrifice_escaped:<br/>'Let me show you a real escape.' (Sacrifice)"] --> global_usePower
-MT_A_also_fav["MT_A_also_fav:<br/>'It's my favorite too.' (TBD)"] -->|Spare| MT_choice_target
-MT_A_also_fav -->|Sacrifice| MT_A_sacrifice_fav
-MT_A_sacrifice_fav["MT_A_sacrifice_fav:<br/>'Let me make you part of the story.' (Sacrifice)"] --> global_usePower
+MT_A_escaped["MT_A_escaped:<br/>'I'm an escaped prisoner myself.' (TBD)"] --> MT_A_end_chat
+MT_A_also_fav["MT_A_also_fav:<br/>'It's my favorite too.' (TBD)"] --> MT_A_end_chat
+MT_A_end_chat{"MT_A_end_chat:<br/>End of chat"} -->|Sacrifice| MT_A_sacrifice
+MT_A_end_chat -->|Spare| MT_choice_target
+MT_A_sacrifice["MT_A_sacrifice:<br/>Sacrifice"] --> global_usePower

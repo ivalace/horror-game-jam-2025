@@ -11,13 +11,12 @@ E_impressed["E_impressed:<br/>'Wow, that's impressive.' (TBD)"] --> E_preen
 E_preen["E_preen:<br/>She preens, soaking up the admiration. (TBD)"] -->|What's it like?| E_life_bff
 E_preen -->|Be influencer?| E_be_influencer
 E_life_bff["E_life_bff:<br/>'What's life like as an influencer's best friend?' (TBD)"] --> E_responsibilities
-E_responsibilities["E_responsibilities:<br/>She launches into a speech about her important responsibilities. (TBD)"] -->|Wish her well| FA_choice_target
+E_responsibilities["E_responsibilities:<br/>She launches into a speech about her important responsibilities. (TBD)"] --> E_end_chat
 E_responsibilities -->|Make job better| E_sacrifice_better
-E_sacrifice_better["E_sacrifice_better:<br/>'I've got a way to make your job better.' (Sacrifice)"] --> global_usePower
 E_be_influencer["E_be_influencer:<br/>'Would you ever want to be an influencer yourself?' (TBD)"] --> E_disgusted
-E_disgusted["E_disgusted:<br/>She looks disgusted at the idea of taking any of Veronica's spotlight. (TBD)"] -->|Apologize| FA_choice_target
+E_disgusted["E_disgusted:<br/>She looks disgusted at the idea of taking any of Veronica's spotlight. (TBD)"] --> E_end_chat
 E_disgusted -->|Taunt her| E_sacrifice_taunt
-E_sacrifice_taunt["E_sacrifice_taunt:<br/>'Guess you just don't have star quality.' (Sacrifice)"] --> global_usePower
+E_sacrifice_taunt["E_sacrifice_taunt:<br/>'Guess you just don't have star quality.' (Sacrifice)"] --> E_end_chat
 E_meal["E_meal:<br/>'What are you eating?' (TBD)"] --> E_most_popular
 E_most_popular["E_most_popular:<br/>'I'm tasting the most popular dishes on the menu for my friend.' (TBD)"] -->|Why?| E_why_notes
 E_most_popular -->|That's a lot of food| E_lot_food
@@ -27,10 +26,16 @@ E_lot_food["E_lot_food:<br/>'That's a lot of food.' (TBD)"] --> E_doesnt_eat
 E_doesnt_eat["E_doesnt_eat:<br/>'I don't eat it all. My friend needs to watch her figure.' (TBD)"] -->|Comment on waste| E_wasteful
 E_doesnt_eat -->|Comment on health| E_health
 E_wasteful["E_wasteful:<br/>'Isn't it wasteful not to eat it all?' (TBD)"] --> E_offended_waste
-E_offended_waste["E_offended_waste:<br/>She bristles. 'I don't care about waste as long as Veronica can do her job.' (TBD)"] -->|Spare| FA_choice_target
+E_offended_waste["E_offended_waste:<br/>She bristles. 'I don't care about waste as long as Veronica can do her job.' (TBD)"] --> E_end_chat
 E_offended_waste -->|Sacrifice| E_sacrifice_waste
-E_sacrifice_waste["E_sacrifice_waste:<br/>You end her wasteful ways. (Sacrifice)"] --> global_usePower
 E_health["E_health:<br/>'What about your own health?' (TBD)"] --> E_proud_supplements
-E_proud_supplements["E_proud_supplements:<br/>She grins. 'I use Veronica's diet supplements. Keeps me healthy.' (TBD)"] -->|Spare| FA_choice_target
+E_proud_supplements["E_proud_supplements:<br/>She grins. 'I use Veronica's diet supplements. Keeps me healthy.' (TBD)"] --> E_end_chat
 E_proud_supplements -->|Sacrifice| E_sacrifice_supplements
-E_sacrifice_supplements["E_sacrifice_supplements:<br/>You show her the real cost of supplements. (Sacrifice)"] --> global_usePower
+E_sacrifice_better["E_sacrifice_better:<br/>'I've got a way to make your job better.' (Sacrifice)"] --> E_end_chat
+E_sacrifice_waste["E_sacrifice_waste:<br/>You end her wasteful ways. (Sacrifice)"] --> E_end_chat
+E_sacrifice_supplements["E_sacrifice_supplements:<br/>You show her the real cost of supplements. (Sacrifice)"] --> E_end_chat
+
+E_end_chat{"E_end_chat:<br/>End of chat"} -->|Sacrifice| E_sacrifice
+E_end_chat -->|Spare| FA_choice_target
+
+E_sacrifice["E_sacrifice:<br/>Sacrifice"] --> global_usePower
