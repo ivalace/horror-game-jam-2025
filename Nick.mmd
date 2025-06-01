@@ -43,3 +43,16 @@ MT_N_end_chat{"MT_N_end_chat:<br/>End of chat"} -->|Sacrifice| MT_N_sacrifice
 MT_N_end_chat -->|Spare| MT_choice_target
 
 MT_N_sacrifice["MT_N_sacrifice:<br/>Sacrifice"] --> global_usePower
+
+MT_N_why_grumpy["MT_N_why_grumpy:<br/>'Why are you so grumpy?' (TBD)"] --> MT_N_middle_aged
+MT_N_middle_aged["MT_N_middle_aged:<br/>He looks at you incredulously. 'I'm a middle-aged man scooping popcorn.' (TBD)"] --> MT_N_rough
+MT_N_middle_aged --> MT_N_worse_jobs
+MT_N_why_bad["MT_N_why_bad:<br/>'Why is the popcorn so bad?' (TBD)"] --> MT_N_cheap_stale
+MT_N_cheap_stale["MT_N_cheap_stale:<br/>'It's cheap ass stale corn from a warehouse probably full of rat turds.' (TBD)"] --> MT_N_gross
+MT_N_cheap_stale --> MT_N_why_serve
+MT_N_worse_jobs["MT_N_worse_jobs:<br/>'There are worse jobs.' (TBD)"] --> MT_N_double_down
+MT_N_worse_jobs --> MT_N_backtrack
+MT_N_rough["MT_N_rough:<br/>'That's rough.' (TBD)"] --> MT_N_rather_do
+MT_N_rough --> MT_N_way_out
+MT_N_gross["MT_N_gross:<br/>'Yeah, that's why I won't eat it. Now get lost, I'm on break.' (TBD)"] --> MT_N_end_chat
+MT_N_why_serve["MT_N_why_serve:<br/>'Uh, it's my job. Fuck off, I'm on break.' (TBD)"] --> MT_N_end_chat
