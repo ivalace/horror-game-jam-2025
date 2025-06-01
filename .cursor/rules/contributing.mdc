@@ -3,8 +3,8 @@ description:
 globs: 
 alwaysApply: true
 ---
-Story file is here: [story.mmd](mdc:story.mmd)
-There are no other files in this project.
+Main overall story file is here: [story.mmd](mdc:story.mmd)
+Each character has their own subfile for their portion of the story.
 
 IMPORTANT RULES:
 - ALL nodes must ALWAYS have human-legible-but-not-verbose IDs, visible within the graph nodes, on their own dedicated line of text within the node.
