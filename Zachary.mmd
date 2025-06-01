@@ -1,0 +1,29 @@
+flowchart TD
+direction LR
+Z_greet["Z_greet:<br/>Zachary: &quot;Yeah? Need something?&quot;"] -->|Cool shirt| Z_shirt
+Z_greet -->|You local| Z_date_spots
+
+Z_shirt["Z_shirt:<br/>&quot;Uh, thanks. Know the band?&quot;"] -->|Yeah| Z_band_yes
+Z_shirt -->|No| Z_band_no
+
+Z_band_yes["Z_band_yes:<br/>&quot;Right? Love them. Your name?&quot;"] -->|Truth| Z_name_truth
+Z_band_yes -->|Hedge| Z_name_hedge
+Z_name_truth["Z_name_truth:<br/>&quot;Cool. I'm Zachary.&quot;"] --> Z_end_chat
+Z_name_hedge["Z_name_hedge:<br/>He frowns at the secrecy."] --> Z_end_chat
+
+Z_band_no["Z_band_no:<br/>&quot;Yeah, it's cool I guess.&quot;"] -->|Genre| Z_genre
+Z_band_no -->|Colors| Z_colors
+Z_genre["Z_genre:<br/>&quot;Mostly thrash metal.&quot;"] -->|Cool| Z_band_yes
+Z_genre -->|Lame| Z_genre_lame
+Z_genre_lame["Z_genre_lame:<br/>&quot;Whatever, old man.&quot;"] --> Z_end_chat
+Z_colors["Z_colors:<br/>&quot;Green's a sick color.&quot;"] --> Z_end_chat
+
+Z_end_chat{"Z_end_chat:<br/>End of chat"} -->|Sacrifice| Z_sacrifice
+Z_end_chat -->|Spare| TC_choice_target
+
+Z_date_spots["Z_date_spots:<br/>&quot;Traveling with my girlfriend. Date spots?&quot;"] -->|River bridge| Z_date_bridge
+Z_date_spots -->|Movies| Z_date_movies
+Z_date_bridge["Z_date_bridge:<br/>&quot;That sounds cool.&quot;"] --> Z_end_chat
+Z_date_movies["Z_date_movies:<br/>&quot;Movies? Lame, but thanks.&quot;"] --> Z_end_chat
+
+Z_sacrifice["Z_sacrifice:<br/>Entity is neutral"] --> global_usePower

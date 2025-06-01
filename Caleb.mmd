@@ -1,0 +1,33 @@
+flowchart TD
+direction LR
+C_greet["C_greet:<br/>Caleb greets you, clearly anxious."] -->|Comment distress| C_distress
+
+%% Distress Path
+C_distress["C_distress:<br/>Surprised you noticed."] -->|Trouble often| C_trouble
+C_distress -->|Why ignored| C_ignored
+
+C_trouble["C_trouble:<br/>Always messing up, boss mad."] -->|Offer escape| C_escape
+C_trouble -->|Give advice| C_advice
+C_escape["C_escape:<br/>Hopeful and desperate."] -->|Sacrifice| C_sacrifice
+C_escape -->|Spare college| FA_choice_target
+C_advice["C_advice:<br/>You give workload tips."] --> FA_choice_target
+
+
+%% Ignored Path
+C_ignored["C_ignored:<br/>&quot;Just a dishwasher... not meant to be seen.&quot;"] -->|Build confidence| C_confidence
+C_ignored -->|Ego hit| C_ego
+
+C_confidence["C_confidence:<br/>Feels happier and grateful."] -->|Cost favor| C_cost_favor
+C_confidence -->|Kindness free| C_free
+
+C_cost_favor["C_cost_favor:<br/>Nervous about favor."] -->|Lure follow| C_sacrifice
+C_cost_favor -->|Advice only| FA_choice_target
+
+C_free["C_free:<br/>Wants to repay you."] -->|Sacrifice help| C_sacrifice
+C_free -->|Spare better job| FA_choice_target
+
+C_ego["C_ego:<br/>Defeated: &quot;That's what my boss says.&quot;"] -->|Offer easy money| C_sacrifice
+C_ego -->|Toughen up| FA_choice_target
+
+
+C_sacrifice["C_sacrifice:<br/>Sacrifice — Entity feeds."] --> global_usePower

@@ -1,0 +1,42 @@
+flowchart TD
+direction LR
+MT_O_greet["MT_O_greet:<br/>Oliver peers at you over his glasses, voice measured. 'So, what did you think of the film?' (TBD)"] -->|Good| MT_O_good
+MT_O_greet -->|Mediocre| MT_O_mediocre
+MT_O_greet -->|Haven't seen it| MT_O_not_seen
+MT_O_good["MT_O_good:<br/>'I thought it was good.' (TBD)"] --> MT_O_slop
+MT_O_slop["MT_O_slop:<br/>'Some people are happy with any old slop.' (TBD)"] -->|What's so wrong?| MT_O_offended
+MT_O_slop -->|What do you do?| MT_O_what_do
+MT_O_offended["MT_O_offended:<br/>'What do you think was so wrong with it?' (TBD)"]
+MT_O_agree_press["MT_O_agree_press:<br/>'Agreed, but why do you think so?' (TBD)"] -->|Make something up| MT_O_make_up
+MT_O_agree_press -->|What do you do?| MT_O_what_do
+MT_O_make_up["MT_O_make_up:<br/>'You make up a reason about the film.' (TBD)"]
+MT_O_waste_time["MT_O_waste_time:<br/>'You were right not to waste your time with it.' (TBD)"] -->|What do you do?| MT_O_what_do
+MT_O_waste_time -->|Time is precious| MT_O_time_precious
+MT_O_time_precious["MT_O_time_precious:<br/>'Time is too precious to waste on bad things.' (TBD)"]
+MT_O_mediocre["MT_O_mediocre:<br/>'I thought it was mediocre.' (TBD)"] --> MT_O_agree_press
+MT_O_not_seen["MT_O_not_seen:<br/>'I haven't seen it.' (TBD)"] --> MT_O_waste_time
+MT_O_what_do["MT_O_what_do:<br/>'I'm a film critic. What about you?' (TBD)"] -->|Detective| MT_O_detective
+MT_O_what_do -->|Evasive| MT_O_evasive
+MT_O_detective["MT_O_detective:<br/>'I was a detective.' (TBD)"] --> MT_O_corpses
+MT_O_corpses["MT_O_corpses:<br/>'Corpses are more entertaining than film these days.' (TBD)"] -->|Be a coroner| MT_O_coroner
+MT_O_corpses -->|Bodies don't do much| MT_O_bodies_bland
+MT_O_coroner["MT_O_coroner:<br/>'Maybe you should become a coroner.' (TBD)"] --> MT_O_love_cinema
+MT_O_love_cinema["MT_O_love_cinema:<br/>He sighs. 'I love cinema too much to abandon it, even if it's all trash.' (TBD)"] -->|Spare| MT_O_spare_better_movie
+MT_O_love_cinema -->|Sacrifice| MT_O_sacrifice_film_die
+MT_O_spare_better_movie["MT_O_spare_better_movie:<br/>'Hope a better movie comes along soon.' (Spare)"] --> MT_choice_target
+MT_O_sacrifice_film_die["MT_O_sacrifice_film_die:<br/>'I've got a film that's to die for.' (Sacrifice)"] --> global_usePower
+MT_O_bodies_bland["MT_O_bodies_bland:<br/>'The bodies don't do much.' (TBD)"] --> MT_O_movies_no_diff
+MT_O_movies_no_diff["MT_O_movies_no_diff:<br/>He chuckles. 'Movies feel no different.' (TBD)"] -->|Spare| MT_O_spare_new_art
+MT_O_movies_no_diff -->|Sacrifice| MT_O_sacrifice_no_diff
+MT_O_spare_new_art["MT_O_spare_new_art:<br/>'Maybe it's time to find a new form of art to review.' (Spare)"] --> MT_choice_target
+MT_O_sacrifice_no_diff["MT_O_sacrifice_no_diff:<br/>'Let me show you something truly different.' (Sacrifice)"] --> global_usePower
+MT_O_so_bad["MT_O_so_bad:<br/>'Is it really that bad?' (TBD)"] --> MT_O_rare_gems
+MT_O_rare_gems["MT_O_rare_gems:<br/>'It's worth the slog for the rare gems.' (TBD)"] -->|Spare| MT_O_spare_rare_gem
+MT_O_rare_gems -->|Sacrifice| MT_O_sacrifice_rare_gem
+MT_O_spare_rare_gem["MT_O_spare_rare_gem:<br/>'Hope you find one soon.' (Spare)"] --> MT_choice_target
+MT_O_sacrifice_rare_gem["MT_O_sacrifice_rare_gem:<br/>'Let me show you a gem you'll never forget.' (Sacrifice)"] --> global_usePower
+MT_O_dont_like["MT_O_dont_like:<br/>'I don't like movies enough for that.' (TBD)"] --> MT_O_sully_art
+MT_O_sully_art["MT_O_sully_art:<br/>He nods. 'Best not to sully the art with a lack of passion.' (TBD)"] -->|Spare| MT_O_spare_sully
+MT_O_sully_art -->|Sacrifice| MT_O_sacrifice_sully
+MT_O_spare_sully["MT_O_spare_sully:<br/>'Take care.' (Spare)"] --> MT_choice_target
+MT_O_sacrifice_sully["MT_O_sacrifice_sully:<br/>'Let me show you true passion.' (Sacrifice)"] --> global_usePower

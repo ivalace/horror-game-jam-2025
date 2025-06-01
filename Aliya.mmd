@@ -1,0 +1,44 @@
+flowchart TD
+direction LR
+MT_A_greet["MT_A_greet:<br/>Aliya greets you with a friendly, 'What did you think of the movie?' (TBD)"] -->|Talk about movie| MT_A_talk_movie
+MT_A_greet -->|Haven't seen it| MT_A_not_seen
+MT_A_talk_movie["MT_A_talk_movie:<br/>'It was... (your thoughts here)' (TBD)"] --> MT_A_fav_genre
+MT_A_fav_genre["MT_A_fav_genre:<br/>'What's your favorite film genre?' (TBD)"] -->|Sci-fi/Fantasy| MT_A_sci_fi
+MT_A_fav_genre -->|Romance| MT_A_romance
+MT_A_fav_genre -->|Thriller/Action| MT_A_thriller
+MT_A_fav_genre -->|Horror| MT_A_horror
+MT_A_fav_genre -->|No favorite| MT_A_no_fav
+MT_A_sci_fi["MT_A_sci_fi:<br/>'Great taste! Sci-fi and fantasy open up whole new worlds.' (TBD)"] -->|Why so invested?| MT_A_invested
+MT_A_sci_fi -->|Favorite movies?| MT_A_favorite
+MT_A_romance["MT_A_romance:<br/>'Romance? I love a good love story—makes everything feel possible.' (TBD)"] -->|Why so invested?| MT_A_invested
+MT_A_romance -->|Favorite movies?| MT_A_favorite
+MT_A_thriller["MT_A_thriller:<br/>'Thrillers and action? Keeps you on the edge of your seat! I get it.' (TBD)"] -->|Why so invested?| MT_A_invested
+MT_A_thriller -->|Favorite movies?| MT_A_favorite
+MT_A_horror["MT_A_horror:<br/>'Horror fans are the bravest. I always end up hiding behind my popcorn.' (TBD)"] -->|Why so invested?| MT_A_invested
+MT_A_horror -->|Favorite movies?| MT_A_favorite
+MT_A_no_fav["MT_A_no_fav:<br/>'No favorite? That's a little sad, but maybe you just haven't found the right one yet.' (TBD)"] -->|Why so invested?| MT_A_invested
+MT_A_no_fav -->|Favorite movies?| MT_A_favorite
+MT_A_not_seen["MT_A_not_seen:<br/>'I haven't seen it yet.' (TBD)"] --> MT_A_why
+MT_A_why["MT_A_why:<br/>'Oh, why not?' (TBD)"] -->|Tied up| MT_A_tied_up
+MT_A_why -->|Not interested| MT_A_not_interested
+MT_A_tied_up["MT_A_tied_up:<br/>'I've just been a little tied up.' (TBD)"] --> MT_A_urge_see
+MT_A_urge_see["MT_A_urge_see:<br/>'That's a shame! You should really see it if you get the chance.' (TBD)"] -->|Why so invested?| MT_A_invested
+MT_A_urge_see -->|Favorite movies?| MT_A_favorite
+MT_A_not_interested["MT_A_not_interested:<br/>'I'm just not interested in the movie.' (TBD)"] --> MT_A_suggest_anyway
+MT_A_suggest_anyway["MT_A_suggest_anyway:<br/>'Oh, really? Well, you should still give it a try!' (TBD)"] -->|Why so invested?| MT_A_invested
+MT_A_suggest_anyway -->|Favorite movies?| MT_A_favorite
+MT_A_invested["MT_A_invested:<br/>'I'm a film student. Studying to be a director.' (TBD)"] -->|Why not actress?| MT_A_not_actress
+MT_A_not_actress["MT_A_not_actress:<br/>'Why not be an actress?' (TBD)"] --> MT_A_tell_stories
+MT_A_tell_stories["MT_A_tell_stories:<br/>'I want to tell stories everyone else is too afraid to tell, not act in someone else's work.' (TBD)"] -->|Offer story| MT_A_sacrifice_story
+MT_A_tell_stories -->|Wish her well| MT_A_spare_story
+MT_A_sacrifice_story["MT_A_sacrifice_story:<br/>'Let me offer you a story unlike any other.' (Sacrifice)"] --> global_usePower
+MT_A_spare_story["MT_A_spare_story:<br/>'I hope you make a story to die for someday.' (Spare)"] --> MT_choice_target
+MT_A_favorite["MT_A_favorite:<br/>'My favorite is Shawshank Redemption.' (TBD)"] --> MT_A_entity_laugh
+MT_A_entity_laugh["MT_A_entity_laugh:<br/>The Entity laughs. 'What's so funny?' (TBD)"] -->|Escaped prisoner| MT_A_escaped
+MT_A_entity_laugh -->|Also favorite| MT_A_also_fav
+MT_A_escaped["MT_A_escaped:<br/>'I'm an escaped prisoner myself.' (TBD)"] -->|Spare| MT_choice_target
+MT_A_escaped -->|Sacrifice| MT_A_sacrifice_escaped
+MT_A_sacrifice_escaped["MT_A_sacrifice_escaped:<br/>'Let me show you a real escape.' (Sacrifice)"] --> global_usePower
+MT_A_also_fav["MT_A_also_fav:<br/>'It's my favorite too.' (TBD)"] -->|Spare| MT_choice_target
+MT_A_also_fav -->|Sacrifice| MT_A_sacrifice_fav
+MT_A_sacrifice_fav["MT_A_sacrifice_fav:<br/>'Let me make you part of the story.' (Sacrifice)"] --> global_usePower

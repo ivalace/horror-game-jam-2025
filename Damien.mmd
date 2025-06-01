@@ -1,0 +1,50 @@
+flowchart TD
+direction LR
+
+D_greet["D_greet:<br/>Damien sits hunched over, eyes glazed. (TBD)"] -->|Are you alright?| D_alright
+D_greet -->|You look far gone| D_far_gone
+
+%% “Are you alright?” track
+D_alright["D_alright:<br/>'Are you alright?' (TBD)"] --> D_never_better
+D_never_better["D_never_better:<br/>'Never better.' His voice is raspy. (TBD)"] -->|Can I help?| D_help
+D_never_better -->|Your pupils| D_pupils
+
+D_help["D_help:<br/>'Can I help you?' (TBD)"] --> D_spare_change
+D_spare_change["D_spare_change:<br/>'You can help by sparing some change.' (TBD)"] -->|How much?| D_how_much
+D_spare_change -->|Doctor| D_doctor
+D_how_much["D_how_much:<br/>'How much do you need?' (TBD)"]
+D_doctor["D_doctor:<br/>'I was thinking more about taking you to a doctor.' (TBD)"]
+
+D_pupils["D_pupils:<br/>'Your pupils are huge.' (TBD)"] --> D_light
+D_light["D_light:<br/>'It's just the light.' (TBD)"] -->|Probably drugs| D_probably_drugs
+D_light -->|Can you see?| D_can_see
+D_probably_drugs["D_probably_drugs:<br/>'It's probably the drugs.' (TBD)"]
+
+D_can_see["D_can_see:<br/>'Can you even see light properly anymore?' (TBD)"] -->|See nothing at all| D_sacrifice_see_nothing
+D_can_see -->|See the world| D_spare_see_world
+D_sacrifice_see_nothing["D_sacrifice_see_nothing:<br/>'Want something that will make you see nothing at all?' (Sacrifice)"] --> global_usePower
+D_spare_see_world["D_spare_see_world:<br/>'Maybe it's time to see the world for what it is.' (Spare)"] --> GA_choice_target
+
+%% “You look far gone” track
+D_far_gone["D_far_gone:<br/>'You look pretty far gone.' (TBD)"] --> D_not_enough
+D_not_enough["D_not_enough:<br/>'Not far gone enough.' (TBD)"] -->|Chase high?| D_chase_high
+D_not_enough -->|Worth of life?| D_worth_life
+
+D_chase_high["D_chase_high:<br/>'Are you really willing to chase a high this hard?' (TBD)"] --> D_nothing_else
+D_nothing_else["D_nothing_else:<br/>'There's nothing else worth living for.' (TBD)"] -->|Convince beauty| D_convince_beauty
+D_nothing_else -->|Probably right| D_probably_right
+
+D_convince_beauty["D_convince_beauty:<br/>'There's still beauty worth living for.' (TBD)"] --> D_caustic_laugh
+D_caustic_laugh["D_caustic_laugh:<br/>He laughs caustically. (TBD)"] -->|Rehab advice| D_rehab_advice
+D_caustic_laugh -->|Sacrifice| D_sacrifice_memory
+D_rehab_advice["D_rehab_advice:<br/>'There's a rehab center in the city. You could try.' (Spare)"] --> GA_choice_target
+D_sacrifice_memory["D_sacrifice_memory:<br/>'Let me put you out of your memory.' (Sacrifice)"] --> global_usePower
+
+D_probably_right["D_probably_right:<br/>'You're probably right.' (TBD)"] --> D_dejected
+D_dejected["D_dejected:<br/>'Was hoping an adult would have a better answer.' (TBD)"] -->|Motivate| D_spare_motivate
+D_dejected -->|Sacrifice| D_sacrifice_solution
+D_spare_motivate["D_spare_motivate:<br/>'You can still make something of your life.' (Spare)"] --> GA_choice_target
+D_sacrifice_solution["D_sacrifice_solution:<br/>'I've got the solution for you.' (Sacrifice)"] --> global_usePower
+
+D_worth_life["D_worth_life:<br/>'Isn't your life worth more than this?' (TBD)"] -->|Motivate| D_spare_motivate
+D_worth_life -->|Too late| D_sacrifice_solution

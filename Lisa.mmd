@@ -1,0 +1,22 @@
+flowchart TD
+direction LR
+L_greet["L_greet:<br/>Lisa: &quot;Oh, hello! Could you take our picture?&quot;"] -->|Yes| L_snap_pic
+L_greet -->|No| L_decline
+
+L_snap_pic["L_snap_pic:<br/>*snap* &quot;Thanks! What's your name?&quot;"] -->|Truth| L_name_truth
+L_snap_pic -->|Evade| L_name_evade
+
+L_name_truth["L_name_truth:<br/>&quot;Nathan? Nice! Are you from here?&quot;"] -->|Specific| L_local_specific
+L_name_truth -->|Hedge| L_local_hedge
+L_local_specific["L_local_specific:<br/>You name a neighborhood."] --> L_zach_interrupt
+L_local_hedge["L_local_hedge:<br/>&quot;Spoken like a true local!&quot;"] --> L_zach_interrupt
+
+L_name_evade["L_name_evade:<br/>Lisa introduces herself."] --> L_zach_interrupt
+
+L_decline["L_decline:<br/>&quot;Sorry to bother you.&quot;"] -->|"Chat anyway"| L_name_evade
+L_decline -->|Sacrifice| L_sacrifice
+
+L_zach_interrupt["L_zach_interrupt:<br/>Zach: &quot;Enough chatting with our food.&quot;"] -->|Sacrifice| L_sacrifice
+L_zach_interrupt -->|Spare| TC_choice_target
+
+L_sacrifice["L_sacrifice:<br/>Entity is pleased"] --> global_usePower

@@ -1,0 +1,31 @@
+flowchart TD
+direction LR
+A_greet["A_greet:<br/>Andrew greets you with con-man charm."] -->|Comment looks| A_looks
+A_greet -->|Ask tourist| A_tourist
+
+A_looks["A_looks:<br/>Brags about appearance."] -->|Rich| A_rich
+A_looks -->|Suspicious| A_suspicious
+A_rich["A_rich:<br/>Faux humility, spins con."] -->|Interest| A_mark
+A_rich -->|Distrust| A_distrust
+
+A_mark["A_mark:<br/>You look like an easy mark."] -->|Sacrifice| A_sacrifice
+A_mark -->|Spare| TC_choice_target
+
+A_distrust["A_distrust:<br/>He doubles down."] -->|Sold| A_sold
+A_distrust -->|Refuse| A_refuse
+A_sold["A_sold:<br/>Self-satisfied."] -->|Sacrifice| A_sacrifice
+A_sold -->|Spare| TC_choice_target
+A_refuse["A_refuse:<br/>Sours after losing mark."] -->|Sacrifice| A_sacrifice
+A_refuse -->|Spare| TC_choice_target
+
+A_suspicious["A_suspicious:<br/>Smoothly counters suspicion."] -->|Sold| A_sold
+A_suspicious -->|Refuse| A_refuse
+
+A_tourist["A_tourist:<br/>Lies about globe-trotting."] -->|Curious| A_spiel
+A_tourist -->|Disbelieving| A_fake_detail
+A_spiel["A_spiel:<br/>Starts his spiel."] -->|Interest| A_mark
+A_spiel -->|Distrust| A_distrust
+A_fake_detail["A_fake_detail:<br/>Overloads with fake detail."] -->|Believe| A_mark
+A_fake_detail -->|Distrust| A_distrust
+
+A_sacrifice["A_sacrifice:<br/>Entity is displeased"] --> global_usePower
