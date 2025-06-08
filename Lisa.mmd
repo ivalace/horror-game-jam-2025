@@ -1,13 +1,13 @@
 flowchart TD
 direction LR
-L_greet["L_greet:<br/>Lisa: &quot;Oh, hello! Could you take our picture?&quot;"] -->|Yes| L_snap_pic
-L_greet -->|No| L_decline
+L_greet["L_greet:<br/>Lisa: &quot;Oh, hello! Could you take our picture?&quot;"] -->|TC_N_yes| L_snap_pic
+L_greet -->|TC_N_no| L_decline
 
-L_snap_pic["L_snap_pic:<br/>*snap* &quot;Thanks! What's your name?&quot;"] -->|Truth| L_name_truth
-L_snap_pic -->|Evade| L_name_evade
+L_snap_pic["L_snap_pic:<br/>*snap* &quot;Thanks! What's your name?&quot;"] -->|TC_N_truth| L_name_truth
+L_snap_pic -->|TC_N_evade| L_name_evade
 
-L_name_truth["L_name_truth:<br/>&quot;Nathan? Nice! Are you from here?&quot;"] -->|Specific| L_local_specific
-L_name_truth -->|Hedge| L_local_hedge
+L_name_truth["L_name_truth:<br/>&quot;Nathan? Nice! Are you from here?&quot;"] -->|TC_N_specific| L_local_specific
+L_name_truth -->|TC_N_hedge| L_local_hedge
 L_local_specific["L_local_specific:<br/>You name a neighborhood."] --> L_end_chat
 L_local_hedge["L_local_hedge:<br/>&quot;Spoken like a true local!&quot;"] --> L_end_chat
 
@@ -15,10 +15,10 @@ L_name_evade["L_name_evade:<br/>Lisa introduces herself."] --> L_end_chat
 
 L_decline["L_decline:<br/>&quot;Sorry to bother you.&quot;"] --> L_end_chat
 
-L_zach_interrupt["L_zach_interrupt:<br/>Zach: &quot;Enough chatting with our food.&quot;"] -->|Sacrifice| L_sacrifice
-L_zach_interrupt -->|Spare| TC_choice_target
+L_zach_interrupt["L_zach_interrupt:<br/>Zach: &quot;Enough chatting with our food.&quot;"] -->|TC_N_sacrifice| L_sacrifice
+L_zach_interrupt -->|TC_N_spare| TC_choice_target
 
-L_end_chat{"L_end_chat:<br/>End of chat"} -->|Sacrifice| L_sacrifice
-L_end_chat -->|Spare| TC_choice_target
+L_end_chat{"L_end_chat:<br/>End of chat"} -->|TC_N_sacrifice| L_sacrifice
+L_end_chat -->|TC_N_spare| TC_choice_target
 
 L_sacrifice["L_sacrifice:<br/>Sacrifice"] --> global_usePower

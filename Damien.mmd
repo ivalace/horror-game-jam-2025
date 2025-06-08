@@ -1,34 +1,26 @@
 flowchart TD
 direction LR
 
-D_greet["D_greet:<br/>Damien sits hunched over, eyes glazed. (TBD)"] -->|Are you alright?| D_alright
-D_greet -->|You look far gone| D_far_gone
-
-%% “Are you alright?” track
-D_alright["D_alright:<br/>'Are you alright?' (TBD)"] --> D_never_better
-D_never_better["D_never_better:<br/>'Never better.' His voice is raspy. (TBD)"] -->|Can I help?| D_help
-D_never_better -->|Your pupils| D_pupils
-
-D_help["D_help:<br/>'Can I help you?' (TBD)"] --> D_spare_change
-D_spare_change["D_spare_change:<br/>'You can help by sparing some change.' (TBD)"] -->|How much?| D_how_much
-D_spare_change -->|Doctor| D_doctor
+D_greet["D_greet:<br/>Damien sits hunched over, eyes glazed. (TBD)"] -->|GA_N_alright| D_never_better
+D_greet -->|GA_N_far_gone| D_not_enough
+D_never_better["D_never_better:<br/>'Never better.' His voice is raspy. (TBD)"] -->|GA_N_help| D_spare_change
+D_never_better -->|GA_N_pupils| D_light
+D_spare_change["D_spare_change:<br/>'You can help by sparing some change.' (TBD)"] -->|GA_N_how_much| D_how_much
+D_spare_change -->|GA_N_doctor| D_doctor
 D_how_much["D_how_much:<br/>'You'd really give me money?' (TBD)"] --> D_end_chat
 D_doctor["D_doctor:<br/>'Can't afford drugs, can't afford doctor.' (TBD)"] --> D_end_chat
 
-D_pupils["D_pupils:<br/>'Your pupils are huge.' (TBD)"] --> D_light
-D_light["D_light:<br/>'It's just the light.' (TBD)"] -->|Probably drugs| D_probably_drugs
-D_light -->|Can you see?| D_can_see
+D_light["D_light:<br/>'It's just the light.' (TBD)"] -->|GA_N_probably_drugs| D_probably_drugs
+D_light -->|GA_N_see| D_can_see
 D_probably_drugs["D_probably_drugs:<br/>'You're probably right. No use denying it.' (TBD)"] --> D_end_chat
 
-D_can_see["D_can_see:<br/>'Can you even see light properly anymore?' (TBD)"] -->|See nothing at all| D_sacrifice_see_nothing
-D_can_see -->|See the world| D_spare_see_world
+D_can_see["D_can_see:<br/>'For a moment I saw all the lights.' (TBD)"] -->|GA_N_see_everything| D_sacrifice_see_nothing
+D_can_see -->|GA_N_see_world| D_spare_see_world
 D_sacrifice_see_nothing["D_sacrifice_see_nothing:<br/>'Want something that will make you see nothing at all?' (Sacrifice)"] --> D_end_chat
 D_spare_see_world["D_spare_see_world:<br/>'Maybe it's time to see the world for what it is.' (Spare)"] --> D_end_chat
 
-%% “You look far gone” track
-D_far_gone["D_far_gone:<br/>'You look pretty far gone.' (TBD)"] --> D_not_enough
-D_not_enough["D_not_enough:<br/>'Not far gone enough.' (TBD)"] -->|Chase high?| D_chase_high
-D_not_enough -->|Worth of life?| D_worth_life
+D_not_enough["D_not_enough:<br/>'Not far gone enough.' (TBD)"] -->|GA_N_chase_high| D_chase_high
+D_not_enough -->|GA_N_worth_life| D_parents_worth
 
 D_chase_high["D_chase_high:<br/>'Are you really willing to chase a high this hard?' (TBD)"] --> D_nothing_else
 D_nothing_else["D_nothing_else:<br/>'There's nothing else worth living for.' (TBD)"] -->|Convince beauty| D_convince_beauty
@@ -46,28 +38,21 @@ D_dejected -->|Sacrifice| D_sacrifice_solution
 D_spare_motivate["D_spare_motivate:<br/>'You can still make something of your life.' (Spare)"] --> D_end_chat
 D_sacrifice_solution["D_sacrifice_solution:<br/>'I've got the solution for you.' (Sacrifice)"] --> D_end_chat
 
-D_worth_life["D_worth_life:<br/>'Isn't your life worth more than this?' (TBD)"] --> D_parents_worth
-D_parents_worth["D_parents_worth:<br/>'My parents didn't think I was worth anything.' (TBD)"] -->|How old?| D_how_old
-D_parents_worth -->|Parents can be shit| D_parents_shit
-D_how_old["D_how_old:<br/>'How old are you?' (TBD)"] --> D_nineteen
-D_nineteen["D_nineteen:<br/>'Just turned nineteen.' (TBD)"] -->|Remark age| D_remark_age
-D_nineteen -->|Ask parents| D_ask_parents
-D_remark_age["D_remark_age:<br/>'That's so young.' (TBD)"] --> D_life_over
+D_parents_worth["D_parents_worth:<br/>'My parents didn't think I was worth anything.' (TBD)"] -->|GA_N_how_old| D_nineteen
+D_parents_worth -->|GA_N_parents_shit| D_not_patronize
+D_nineteen["D_nineteen:<br/>'Just turned nineteen.' (TBD)"] -->|GA_N_remark_age| D_life_over
+D_nineteen -->|GA_N_ask_parents| D_parents_kicked
 D_life_over["D_life_over:<br/>'My life was over before I had the chance to grow up.' (TBD)"] -->|Spare| D_end_chat
 D_life_over -->|Sacrifice| D_sacrifice_life_over
 D_sacrifice_life_over["D_sacrifice_life_over:<br/>'Let me give you a new ending.' (Sacrifice)"] --> D_end_chat
-D_ask_parents["D_ask_parents:<br/>'What happened with your parents?' (TBD)"] --> D_parents_kicked
 D_parents_kicked["D_parents_kicked:<br/>'They kicked me out when they realized I was flunking high school.' (TBD)"] -->|Spare| D_end_chat
 D_parents_kicked -->|Sacrifice| D_sacrifice_parents
 D_sacrifice_parents["D_sacrifice_parents:<br/>'Let me show you a place you belong.' (Sacrifice)"] --> D_end_chat
-D_parents_shit["D_parents_shit:<br/>'Parents can be shit.' (TBD)"] --> D_not_patronize
-D_not_patronize["D_not_patronize:<br/>'Don't patronize me.' (TBD)"] -->|Not patronizing| D_not_patronizing
-D_not_patronize -->|Apologize| D_apologize
-D_not_patronizing["D_not_patronizing:<br/>'I'm not patronizing you.' (TBD)"] --> D_never_sure
+D_not_patronize["D_not_patronize:<br/>'Don't patronize me.' (TBD)"] -->|GA_N_not_patronize| D_never_sure
+D_not_patronize -->|GA_N_apologize| D_just_coming_down
 D_never_sure["D_never_sure:<br/>'Can never be sure. Just give me a hit or leave me be.' (TBD)"] -->|Spare| D_end_chat
 D_never_sure -->|Sacrifice| D_sacrifice_never_sure
 D_sacrifice_never_sure["D_sacrifice_never_sure:<br/>'Here's your last hit.' (Sacrifice)"] --> D_end_chat
-D_apologize["D_apologize:<br/>'Sorry, I didn't mean to.' (TBD)"] --> D_just_coming_down
 D_just_coming_down["D_just_coming_down:<br/>'Sorry, I'm just coming down. Need another hit.' (TBD)"] -->|Spare| D_end_chat
 D_just_coming_down -->|Sacrifice| D_sacrifice_coming_down
 D_sacrifice_coming_down["D_sacrifice_coming_down:<br/>'Let me help you with that.' (Sacrifice)"] --> D_end_chat

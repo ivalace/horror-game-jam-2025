@@ -1,34 +1,32 @@
 flowchart TD
 direction LR
-A_greet["A_greet:<br/>Andrew greets you with con-man charm."] -->|Comment looks| A_looks
-A_greet -->|Ask tourist| A_tourist
+A_greet["A_greet:<br/>Andrew greets you with con-man charm."] -->|TC_N_comment_looks| A_looks
+A_greet -->|TC_N_ask_tourist| A_tourist
 
-A_looks["A_looks:<br/>Brags about appearance."] -->|Rich| A_rich
-A_looks -->|Suspicious| A_suspicious
-A_rich["A_rich:<br/>Faux humility, spins con."] -->|Interest| A_mark
-A_rich -->|Distrust| A_distrust
+A_looks["A_looks:<br/>Brags about appearance."] -->|TC_N_rich| A_rich
+A_looks -->|TC_N_suspicious| A_suspicious
+A_rich["A_rich:<br/>Faux humility, spins con."] -->|TC_N_interest| A_mark
+A_rich -->|TC_N_distrust| A_distrust
 
 A_mark["A_mark:<br/>You look like an easy mark."] --> A_end_chat
-A_mark -->|Spare| TC_choice_target
 
-A_distrust["A_distrust:<br/>He doubles down."] -->|Sold| A_sold
-A_distrust -->|Refuse| A_refuse
+
+A_distrust["A_distrust:<br/>He doubles down."] -->|TC_N_sold| A_sold
+A_distrust -->|TC_N_refuse| A_refuse
 A_sold["A_sold:<br/>Self-satisfied."] --> A_end_chat
-A_sold -->|Spare| TC_choice_target
 A_refuse["A_refuse:<br/>Sours after losing mark."] --> A_end_chat
-A_refuse -->|Spare| TC_choice_target
 
-A_suspicious["A_suspicious:<br/>Smoothly counters suspicion."] -->|Sold| A_sold
-A_suspicious -->|Refuse| A_refuse
+A_suspicious["A_suspicious:<br/>Smoothly counters suspicion."] -->|TC_N_sold| A_sold
+A_suspicious -->|TC_N_refuse| A_refuse
 
-A_tourist["A_tourist:<br/>Lies about globe-trotting."] -->|Curious| A_spiel
-A_tourist -->|Disbelieving| A_fake_detail
-A_spiel["A_spiel:<br/>Starts his spiel."] -->|Interest| A_mark
-A_spiel -->|Distrust| A_distrust
-A_fake_detail["A_fake_detail:<br/>Overloads with fake detail."] -->|Believe| A_mark
-A_fake_detail -->|Distrust| A_distrust
+A_tourist["A_tourist:<br/>Lies about globe-trotting."] -->|TC_N_curious| A_spiel
+A_tourist -->|TC_N_disbelieving| A_fake_detail
+A_spiel["A_spiel:<br/>Starts his spiel."] -->|TC_N_interest| A_mark
+A_spiel -->|TC_N_distrust| A_distrust
+A_fake_detail["A_fake_detail:<br/>Overloads with fake detail."] -->|TC_N_believe| A_mark
+A_fake_detail -->|TC_N_distrust| A_distrust
 
-A_end_chat{"A_end_chat:<br/>End of chat"} -->|Sacrifice| A_sacrifice
-A_end_chat -->|Spare| TC_choice_target
+A_end_chat{"A_end_chat:<br/>End of chat"} -->|TC_N_sacrifice| A_sacrifice
+A_end_chat -->|TC_N_spare| TC_choice_target
 
 A_sacrifice["A_sacrifice:<br/>Sacrifice"] --> global_usePower
