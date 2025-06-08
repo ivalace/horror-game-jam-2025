@@ -19,20 +19,16 @@ D_can_see -->|GA_N_see_world| D_spare_see_world
 D_sacrifice_see_nothing["D_sacrifice_see_nothing:<br/>'Want something that will make you see nothing at all?' (Sacrifice)"] --> D_end_chat
 D_spare_see_world["D_spare_see_world:<br/>'Maybe it's time to see the world for what it is.' (Spare)"] --> D_end_chat
 
-D_not_enough["D_not_enough:<br/>'Not far gone enough.' (TBD)"] -->|GA_N_chase_high| D_chase_high
+D_not_enough["D_not_enough:<br/>'Not far gone enough.' (TBD)"] -->|GA_N_chase_high| D_nothing_else
 D_not_enough -->|GA_N_worth_life| D_parents_worth
+D_nothing_else["D_nothing_else:<br/>'There's nothing else worth living for.' (TBD)"] -->|GA_N_convince_beauty| D_caustic_laugh
+D_nothing_else -->|GA_N_probably_right| D_dejected
 
-D_chase_high["D_chase_high:<br/>'Are you really willing to chase a high this hard?' (TBD)"] --> D_nothing_else
-D_nothing_else["D_nothing_else:<br/>'There's nothing else worth living for.' (TBD)"] -->|Convince beauty| D_convince_beauty
-D_nothing_else -->|Probably right| D_probably_right
-
-D_convince_beauty["D_convince_beauty:<br/>'There's still beauty worth living for.' (TBD)"] --> D_caustic_laugh
 D_caustic_laugh["D_caustic_laugh:<br/>He laughs caustically. (TBD)"] -->|Rehab advice| D_rehab_advice
 D_caustic_laugh -->|Sacrifice| D_sacrifice_memory
 D_rehab_advice["D_rehab_advice:<br/>'There's a rehab center in the city. You could try.' (Spare)"] --> D_end_chat
 D_sacrifice_memory["D_sacrifice_memory:<br/>'Let me put you out of your memory.' (Sacrifice)"] --> D_end_chat
 
-D_probably_right["D_probably_right:<br/>'You're probably right.' (TBD)"] --> D_dejected
 D_dejected["D_dejected:<br/>'Was hoping an adult would have a better answer.' (TBD)"] -->|Motivate| D_spare_motivate
 D_dejected -->|Sacrifice| D_sacrifice_solution
 D_spare_motivate["D_spare_motivate:<br/>'You can still make something of your life.' (Spare)"] --> D_end_chat

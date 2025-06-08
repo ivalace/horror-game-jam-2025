@@ -1,27 +1,20 @@
 flowchart TD
 direction LR
-S_greet["S_greet:<br/>Sandy greets you with a flirty smile and playful tone. (TBD)"] -->|What are you doing here?| S_what_here
-S_greet -->|Makeup's smeared| S_makeup
-S_what_here["S_what_here:<br/>'What are you doing in a place like this?' (TBD)"] --> S_suggestive
-S_suggestive["S_suggestive:<br/>She leans in with an overly suggestive remark. (TBD)"] --> S_realize
-S_makeup["S_makeup:<br/>'Your makeup's a little smeared.' (TBD)"] --> S_offer_mess
-S_offer_mess["S_offer_mess:<br/>'Want to mess it up more? It'll cost you.' (TBD)"] --> S_realize
-S_realize["S_realize:<br/>'Oh... you're a prostitute.' (TBD)"] --> S_nbd
-S_nbd["S_nbd:<br/>She shrugs. 'No big deal. Special discount for first timers.' (TBD)"] -->|Why do it?| S_why
-S_nbd -->|Comment on appearance| S_appearance
-S_why["S_why:<br/>'Why do you do it?' (TBD)"] --> S_feels_good
-S_feels_good["S_feels_good:<br/>'Feels good and pays the bills.' (TBD)"] -->|Bills aren't drugs| S_bills_drugs
-S_feels_good -->|Want more from life?| S_want_more
-S_bills_drugs["S_bills_drugs:<br/>'Bills aren't drugs.' (TBD)"] --> S_ride_high
+S_greet["S_greet:<br/>Sandy greets you with a flirty smile and playful tone. (TBD)"] -->|GA_N_what_here| S_suggestive
+S_greet -->|GA_N_makeup| S_offer_mess
+S_suggestive["S_suggestive:<br/>She leans in with an overly suggestive remark. (TBD)"] --> |GA_N_realize| S_nbd
+S_offer_mess["S_offer_mess:<br/>'Want to mess it up more? It'll cost you.' (TBD)"] --> |GA_N_realize| S_nbd
+S_nbd["S_nbd:<br/>She shrugs. 'No big deal. Special discount for first timers.' (TBD)"] -->|GA_N_why| S_feels_good
+S_nbd -->|GA_N_appearance| S_brush_off
+S_feels_good["S_feels_good:<br/>'Feels good and pays the bills.' (TBD)"] -->|GA_N_bills| S_ride_high
+S_feels_good -->|GA_N_want_more| S_cant_remember
 S_ride_high["S_ride_high:<br/>She smiles. 'Don't knock it till you try it. Want to ride the high with me? Extra fee.' (TBD)"] -->|Spare| S_spare_rehab
 S_ride_high -->|Sacrifice| S_sacrifice_drug
 S_cant_remember["S_cant_remember:<br/>'Can't remember life before the high.' (TBD)"] -->|Spare| S_spare_rehab
 S_cant_remember -->|Sacrifice| S_sacrifice_drug
 S_spare_rehab["S_spare_rehab:<br/>'I hope you find a better life. There's a rehab center in the city.' (Spare)"] --> S_end_chat
 S_sacrifice_drug["S_sacrifice_drug:<br/>'Let me offer you a greater drug.' (Sacrifice)"] --> S_end_chat
-S_want_more["S_want_more:<br/>'Ever wanted more from life?' (TBD)"] --> S_cant_remember
-S_appearance["S_appearance:<br/>'You look kind of sickly.' (TBD)"] --> S_brush_off
-S_brush_off["S_brush_off:<br/>'Price of the high. The important parts still feel good.' (TBD)"] --> S_want_more
+S_brush_off["S_brush_off:<br/>'Price of the high. The important parts still feel good.' (TBD)"] --> |GA_N_want_more| S_cant_remember
 
 S_end_chat{"S_end_chat:<br/>End of chat"} -->|Sacrifice| S_sacrifice
 S_end_chat -->|Spare| GA_choice_target
