@@ -2,24 +2,13 @@ flowchart TD
 direction LR
 
 %% ---------- TONY (IS_To_*) ----------
-IS_To_greet["IS_To_greet:<br/>Tony: 'What a night, this place gives me the creeps.'"] -->|Boring| IS_To_bore
-IS_To_greet -->|Cigarette| IS_To_cig
-IS_To_greet -->|Leave| IS_To_leave
+IS_To_greet["IS_To_greet:<br/>Tony: 'What a night, this place gives me the creeps.'"] -->|IS_N_bore| IS_To_bore
+IS_To_greet -->|IS_N_cig| IS_To_cig
 
 %% --- Branch 1 : Boring ---
-IS_To_bore["IS_To_bore:<br/>Nathan: 'Must be boring waiting here alone.'"] --> IS_To_bore_T
-IS_To_bore_T["IS_To_bore_T:<br/>Tony: 'Been doing this for years, still boring.'"] --> IS_To_bore_entity
-IS_To_bore_entity["IS_To_bore_entity:<br/>Entity: 'You love cards, Nathan.'"] --> IS_To_bore_kill
-IS_To_bore_kill["IS_To_bore_kill:<br/>Nathan: 'Got a deck? Let's play.' (Kill Tony)"] --> IS_To_end_chat
+IS_To_bore["IS_To_bore:<br/>Tony: 'Been doing this for years, still boring.'"] --> IS_To_end_chat
 
 %% --- Branch 2 : Cigarette ---
-IS_To_cig["IS_To_cig:<br/>Nathan: 'Got a cigarette by any chance?'"] --> IS_To_cig_T
-IS_To_cig_T["IS_To_cig_T:<br/>Tony: 'Sure, let me find the pack.'"] --> IS_To_cig_entity
-IS_To_cig_entity["IS_To_cig_entity:<br/>Entity: 'Ah, a sweet smoke.'"] --> IS_To_cig_kill
-IS_To_cig_kill["IS_To_cig_kill:<br/>Nathan: 'I'll give you a light.' (Kill Tony)"] --> IS_To_end_chat
-
-%% --- Branch 3 : Leave ---
-IS_To_leave["IS_To_leave:<br/>Nathan: 'Nice meeting you. Good night.'"] --> IS_To_end_chat
-
+IS_To_cig["IS_To_cig:<br/>Tony: 'Sure, let me find the pack.'"] --> IS_To_end_chat
 IS_To_end_chat{"IS_To_end_chat:<br/>End of chat"} -->|Sacrifice| global_usePower
 IS_To_end_chat -->|Spare| IS_choice_targetDo

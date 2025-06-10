@@ -2,24 +2,14 @@ flowchart TD
 direction LR
 
 %% ---------- CLARA (IS_Cla_*) ----------
-IS_Cla_greet["IS_Cla_greet:<br/>Clara: 'Good night, good sir. Do you need anything?'"] -->|Friends| IS_Cla_friends
+IS_Cla_greet["IS_Cla_greet:<br/>Clara: 'Good night, good sir. Do you need anything?'"] -->|IS_N_friends| IS_Cla_friends
 IS_Cla_greet -->|Family| IS_Cla_harm
-IS_Cla_greet -->|Transferred| IS_Cla_leave
 
 %% --- Branch 1 : Friends ---
-IS_Cla_friends["IS_Cla_friends:<br/>Nathan: 'We were friends in jail — cells side by side.'"] --> IS_Cla_friends_C
-IS_Cla_friends_C["IS_Cla_friends_C:<br/>Clara: 'I hope he did not cause trouble!'"] --> IS_Cla_friends_entity
-IS_Cla_friends_entity["IS_Cla_friends_entity:<br/>Entity: 'Spin those lies, Nathan.'"] --> IS_Cla_friends_kill
-IS_Cla_friends_kill["IS_Cla_friends_kill:<br/>Nathan: 'Let’s sit and chat.' (Kill Clara)"] --> IS_Cla_end_chat
+IS_Cla_friends["IS_Cla_friends:<br/>Clara: 'I hope he did not cause trouble!'"] --> IS_Cla_end_chat
 
 %% --- Branch 2 : Family (dark truth) ---
-IS_Cla_harm["IS_Cla_harm:<br/>Nathan: 'Well… I actually can’t say for sure.'"] --> IS_Cla_harm_C
-IS_Cla_harm_C["IS_Cla_harm_C:<br/>Clara: 'What do you mean? Did something happen?'"] --> IS_Cla_harm_entity
-IS_Cla_harm_entity["IS_Cla_harm_entity:<br/>Entity: 'Keep it in the family, Nathan.'"] --> IS_Cla_harm_kill
-IS_Cla_harm_kill["IS_Cla_harm_kill:<br/>Nathan: 'He was… now he has a broken arm. Your turn, old lady.' (Kill Clara)"] --> IS_Cla_end_chat
-
-%% --- Branch 3 : Transferred ---
-IS_Cla_leave["IS_Cla_leave:<br/>Nathan: 'I was transferred; no idea how he is. I’m leaving — hate this place.'"] --> IS_Cla_end_chat
+IS_Cla_harm["IS_Cla_harm:<br/>Clara: 'What do you mean? Did something happen?'"] --> IS_Cla_end_chat
 
 IS_Cla_end_chat{"IS_Cla_end_chat:<br/>End of chat"} -->|Sacrifice| global_usePower
 IS_Cla_end_chat -->|Spare| IS_choice_target
